@@ -55,8 +55,8 @@ for_window [class="plasmashell"] kill
 
 #---# window properties #---#
 assign [class="Brave-browser"] $ws1
-assign [class="st" instance="initterm"] $ws2
-assign [class="st" instance="irssi"] $ws3
+assign [class="St" instance="initterm"] $ws2
+assign [class="St" instance="irssi"] $ws3
 assign [class="discord"] $ws3
 assign [class="dolphin"] $ws4
 assign [class="zoom"] $ws8
@@ -81,9 +81,9 @@ for_window [instance="weather"] sticky enable
 
 #---# initial startup applications #---#
 exec $browser
-exec $term --name initterm
-exec $term --name irssi -e irssi
-exec $term --name floatterm
+exec $term -n initterm
+exec $term -n irssi -e irssi
+exec $term -n floatterm
 
 # redshift for / w A r M n E s S /
 exec redshift -c $HOME/.config/redshift/redshift.conf
@@ -161,7 +161,7 @@ bindsym $mod+r                       exec $term -e lf
 # bindsym $mod+Shift+r
 
 bindsym $mod+t                       layout toggle split
-bindsym $mod+Shift+t                 exec $term --noclose --name weather -e curl https://www.wttr.in
+bindsym $mod+Shift+t                 exec $term -n weather -e curl https://www.wttr.in
 
 bindsym $mod+y                       exec $term -e irssi
 bindsym $mod+Shift+y                 resize shrink width 10 px
@@ -229,7 +229,7 @@ bindsym $mod+Ctrl+b                  exec --no-startup-id $HOME/.local/bin/i3/ho
 # bindsym $mod+Shift+m
 
 # STOP/HIDE EVERYTHING
-bindsym $mod+Shift+Delete            workspace $lmao; exec playerctl --all-players stop; exec $term -e htop; exec $term -e lf
+bindsym $mod+Shift+Delete            workspace $ws11; exec playerctl --all-players stop; exec $term -e htop; exec $term -e lf
 
 
 
@@ -252,7 +252,7 @@ set $ws7 "7"
 set $ws8 "8. "
 set $ws9 "9. "
 set $ws10 "10. "
-set $lmao "-1"
+set $ws11 "11"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
