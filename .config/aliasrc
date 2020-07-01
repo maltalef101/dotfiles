@@ -22,20 +22,24 @@ alias \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi"
 
+# Config files edit commands.
+alias \
+    i3c="nvim $HOME/.config/i3/config" \
+    nvc="nvim $HOME/.config/nvim/init.vim" \
+    zrc="nvim $HOME/.config/zsh/.zshrc" \
+    zpf="nvim $HOME/.zprofile"
+
+
 # These common commands are just too long! Abbreviate them.
 alias \
 	ka="killall" \
 	g="git" \
 	trem="transmission-remote" \
-	YT="youtube-viewer" \
 	sdn="sudo shutdown -h now" \
 	f="$FILE" \
 	e="$EDITOR" \
 	v="$EDITOR" \
 	p="sudo pacman" \
-	xi="sudo xbps-install" \
-	xr="sudo xbps-remove -R" \
-	xq="xbps-query" \
 	z="zathura"
 
 alias \
