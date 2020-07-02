@@ -9,7 +9,8 @@ dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XA
 
 remaps &		# run the remaps script, switching caps/esc and more; check it for more info
 setbg &			# set the background with the `setbg` script
-# picom --config $HOME/.config/picom/picom.conf &		# xcompmgr for transparency
+picom --config $HOME/.config/picom/picom.conf &		# picom for transparency
 dunst &			# dunst for notifications
-xset r rate 180 40 &	# Speed xrate up
+xset r rate 170 40 &	# Speed xrate up
 unclutter &		# Remove mouse when idle
+redshift -c $HOME/.config/redshift/redshift.conf

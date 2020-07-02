@@ -9,8 +9,6 @@ alias \
 	mv="mv -v" \
 	rm="rm -v" \
 	mkd="mkdir -pv" \
-	yt="youtube-dl --add-metadata -i" \
-	yta="yt -x -f bestaudio/best" \
 	ffmpeg="ffmpeg -hide_banner"
 
 # Colorize commands when possible.
@@ -19,6 +17,10 @@ alias \
 	la="ls -a --color=auto --group-directories-first" \
 	ll="ls -la --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
+    fgrep="fgrep --color=auto" \
+    egrep="egrep --color=auto" \
+    dir="dir --color=auto" \
+    vdir="vdir --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi"
 
@@ -40,7 +42,18 @@ alias \
 	e="$EDITOR" \
 	v="$EDITOR" \
 	p="sudo pacman" \
-	z="zathura"
+	z="zathura" \
+    srr="xset r rate 170 40"
+
+# Git aliases:
+alias \
+    g="git" \
+    gst="git status" \
+    gcl="git clone" \
+    gpl="git pull" \
+    gps="git push" \
+    ga="git add" \
+    gcm="git commit -m"
 
 alias \
 	magit="nvim -c MagitOnly" \
