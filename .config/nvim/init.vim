@@ -1,6 +1,7 @@
 syntax on
 
-set guicursor=
+set guicursor+=a:blinkon1
+set guicursor+=a:block-Cursor
 set nohlsearch
 set hidden
 set noerrorbells
@@ -20,6 +21,7 @@ set undofile
 set incsearch
 set termguicolors
 set scrolloff=8
+set formatoptions+=tcroqj
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -34,26 +36,33 @@ set shortmess+=c
 call plug#begin('~/.vim/plugged')
 
 Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tweekmonster/gofmt.vim'
+" Git-related plugins
 Plug 'tpope/vim-fugitive'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'airblade/vim-gitgutter'
+" Aesthetic stuff
+Plug 'ryanoasis/vim-devicons'
+" Commenter (bc i don't like to use vblocks)
+Plug 'scrooloose/nerdcommenter'
 Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
 Plug 'sheerun/vim-polyglot'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'cohama/lexima.vim'
+" filetree
+Plug 'preservim/nerdtree'
+" Write CSS faster
 Plug 'rstacruz/vim-hyperstyle'
-
 " colorscheme: "
 Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'phanviet/vim-monokai-pro'
 Plug 'vim-airline/vim-airline'
 Plug 'flazz/vim-colorschemes'
-" Plug '/home/mpaulson/personal/vim-be-good'
+Plug '/home/mpaulson/personal/vim-be-good'
 
 call plug#end()
 
@@ -73,6 +82,23 @@ let g:go_highlight_generate_tags = 1
 let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_auto_sameids = 1
+
+" nerdcommenter config
+let g:NERDSpaceDelims = 1       " adds space between comments and code
+
+" coc config.
+let g:coc_global_extensions = [
+    \ 'coc-snippets',
+    \ 'coc-pairs',
+    \ 'coc-tsserver',
+    \ 'coc-eslint',
+    \ 'coc-prettier',
+    \ 'coc-json', 
+    \ ]
+
+" prettier command for coc
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 
 colorscheme gruvbox
 set background=dark
@@ -97,7 +123,7 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>z :split<CR>
 nnoremap <leader>v :vsplit<CR>
-nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+nnoremap <leader>pv :NERDTreeToggle<CR>
 nnoremap <Leader>ps :Rg<SPACE>
 nnoremap <C-p> :GFiles<CR>
 nnoremap <Leader>pf :Files<CR>
@@ -110,6 +136,8 @@ nnoremap <Leader>m- :resize -5<CR>
 nnoremap <Leader>- :vertical resize -5<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+" Comment multiple lines using nerdcommenter
+map ++ <plug>NERDCommenterToggle
 
 
 " arrow keys disable:
