@@ -35,7 +35,6 @@ alias \
 # These common commands are just too long! Abbreviate them.
 alias \
 	ka="killall" \
-	g="git" \
 	trem="transmission-remote" \
 	sdn="sudo shutdown -h now" \
 	f="$FILE" \
@@ -53,6 +52,7 @@ alias \
     gpl="git pull" \
     gps="git push" \
     ga="git add" \
+    gc="git commit" \
     gcm="git commit -m"
 
 alias \
