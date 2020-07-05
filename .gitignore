@@ -1,0 +1,15 @@
+arch-rice-test
+dwl
+.pki
+.cache
+.Xauthority
+.config/BraveSoftware
+.local/share/xorg
+.local/share/nvim
+.local/share/gnupg/
+.config/nvim/undodir
+.config/zsh/.zcompdump
+.gitconfig
+.ssh
+.vim
+.config/nvim/undodir
