@@ -29,7 +29,8 @@ alias \
     i3c="nvim $HOME/.config/i3/config" \
     nvc="nvim $HOME/.config/nvim/init.vim" \
     zrc="nvim $HOME/.config/zsh/.zshrc" \
-    zpf="nvim $HOME/.zprofile"
+    zpf="nvim $HOME/.zprofile" \
+    pbc="nvim $HOME/.config/polybar/config"
 
 
 # These common commands are just too long! Abbreviate them.
