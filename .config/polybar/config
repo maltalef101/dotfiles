@@ -1,0 +1,129 @@
+# vim: filetype=dosini
+[bar/maltalef]
+enable-ipc = true
+monitor =
+bottom = false
+
+width = 100%
+height = 29
+
+offset-x = 0
+offset-y = 0
+
+font-0 = Noto Sans Mono:style=Medium:size=10;2
+font-1 = FontAwesome:size=10;3
+
+padding = 1,1
+
+separator = |
+
+background = ${colors.background}
+
+modules-left = i3
+modules-center = title
+modules-right = xkeyboard eth cpu date powermenu
+
+module-margin = 1
+
+tray-position = right
+
+
+[colors]
+foreground = #f3f4f5
+alt-foreground = #676E6D
+background = #121212
+alert = #E53935
+
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix-foreground = ${colors.foreground}
+format-underline = #ffffff
+label = %percentage%
+
+
+
+[module/i3]
+type = internal/i3
+enable-click = true
+
+ws-icon-1 = (1)
+ws-icon-2 = (2)
+ws-icon-3 = (3)
+ws-icon-4 = (4)
+ws-icon-5 = (5)
+ws-icon-6 = (6)
+ws-icon-7 = (7)
+ws-icon-8 = (8)
+ws-icon-9 = (9)
+ws-icon-10 = (10)
+ws-icon-11 = (11)
+
+label-focused-foreground = ${colors.foreground}
+label-unfocused-foreground = ${colors.alt-foreground}
+label-urgent-foreground = ${colors.alert}
+label-focused-background = ${colors.background}
+
+
+
+[module/title]
+type = internal/xwindow
+label = %title:0:30:...%
+
+
+
+[module/eth]
+type = internal/network
+interface = enp0s25
+interval = 3.0
+
+label-connected = %local_ip%
+
+
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+
+
+[module/date]
+type = internal/date
+interval = 1.0
+
+date = "%a %d %b"
+time = "%R:%S"
+label = "%date% // %time%"
+
+
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.alert}
+label-close = cancel
+label-close-foreground = ${colors.alert}
+label-separator = ||
+label-separator-foreground = ${colors.alt-foreground}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = ya sure?
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = cancel
+menu-2-0-exec = menu-open-0
+menu-2-1 = ya sure?
+menu-2-1-exec = sudo poweroff
