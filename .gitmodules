@@ -1,0 +1,3 @@
+[submodule ".local/share/src/st"]
+	path = .local/share/src/st
+	url = https://github.com/maltalef101/st.git
