@@ -12,9 +12,9 @@
 
 #---# basic definitions #---#
 set $gaps 7
-set $mod Mod1
+set $mod Mod4
 # set $alt mod1
-font pango:System San Francisco Display 10
+font pango:System San Francisco Display 11
 set $shutdown sudo -A shutdown now
 set $reboot sudo -A reboot
 set $netrefresh --no-startup-id sudo systemctl restart NetworkManager
@@ -115,21 +115,25 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 
 
-#---# status bar with i3xrocks #---#
-bar {
-  	status_command i3xrocks -c $HOME/.config/i3/i3xrocks.conf
-    position top
-    bindsym button4 nop
-    bindsym button5 nop
-	colors {
-		background $bg-color
-	    	separator #757575
-		#                  border             background         text
-		focused_workspace  $bg-color          $bg-color          $text-color
-		inactive_workspace $inactive-color    $inactive-color    $inactive-text-color
-		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-	}
-}
+#---# status bar with polybar #---#
+exec_always $HOME/.local/bin/launchbar
+
+
+#---# status bar with i3xrocks (DEPRECATED) #---#
+# bar {
+      # status_command i3xrocks -c $HOME/.config/i3/i3xrocks.conf
+    # position top
+    # bindsym button4 nop
+    # bindsym button5 nop
+	# colors {
+		# background $bg-color
+			# separator #757575
+		# #                  border             background         text
+		# focused_workspace  $bg-color          $bg-color          $text-color
+		# inactive_workspace $inactive-color    $inactive-color    $inactive-text-color
+		# urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	# }
+# }
 
 
 
@@ -201,7 +205,7 @@ bindsym $mod+j                       focus down
 bindsym $mod+Shift+j                 move down
 
 bindsym $mod+k                       focus up
-bindsym $mod+Shift+k                 move down
+bindsym $mod+Shift+k                 move up
 
 bindsym $mod+l                       focus right
 bindsym $mod+Shift+l                 move right
@@ -242,16 +246,16 @@ bindsym $mod+Shift+Prior             move container to workspace prev
 bindsym $mod+comma                   split h, exec $term
 bindsym $mod+period                  split v, exec $term
 
-set $ws1 "1. "
-set $ws2 "2. "
-set $ws3 "3. "
-set $ws4 "4. "
-set $ws5 "5. "
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
-set $ws8 "8. "
-set $ws9 "9. "
-set $ws10 "10. "
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 set $ws11 "11"
 
 # switch to workspace
