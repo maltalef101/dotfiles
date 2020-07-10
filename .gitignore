@@ -1,4 +1,5 @@
 .Xauthority
+.config/zsh/.zcompdump
 .bash_logout
 .bash_profile
 .bashrc
