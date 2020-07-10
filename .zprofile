@@ -58,4 +58,3 @@ export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 [ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ] && shortcuts >/dev/null 2>&1 &
 
 [ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1 && exec startx
-
