@@ -1,5 +1,4 @@
 .Xauthority
-.config/zsh/.zcompdump
 .bash_logout
 .bash_profile
 .bashrc
@@ -9,12 +8,15 @@
 .config/dconf
 .config/discord/
 .config/neofetch
-.config/nvim/undodir
+.config/nvim/.netrwhist
 .config/nvim/undodir
 .config/pulse
 .config/spotify
+.config/transmission-daemon/dht.dat
+.config/transmission-daemon/resume/
+.config/transmission-daemon/stats.json
+.config/transmission-daemon/torrents/
 .config/zoomus.conf
-.config/zsh/.zcompdump
 .config/zsh/.zcompdump
 .gitconfig
 .gnupg
