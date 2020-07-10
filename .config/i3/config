@@ -222,9 +222,9 @@ bindsym $mod+Shift+c                 exec playerctl --player=spotify previous
 bindsym $mod+v                       bar mode toggle
 # bindsym $mod+Shift+v
 
-bindsym $mod+b                       floating toggle; sticky toggle; exec --no-startup-id $HOME/.local/bin/i3/hover right
-bindsym $mod+Shift+b                 exec --no-startup-id $HOME/.local/bin/i3/hover right
-bindsym $mod+Ctrl+b                  exec --no-startup-id $HOME/.local/bin/i3/hover left
+bindsym $mod+b                       floating toggle; sticky toggle; exec --no-startup-id $HOME/.local/bin/wm-scripts/hover right
+bindsym $mod+Shift+b                 exec --no-startup-id $HOME/.local/bin/wm-scripts/hover right
+bindsym $mod+Ctrl+b                  exec --no-startup-id $HOME/.local/bin/wm-scripts/hover left
 
 # bindsym $mod+n
 # bindsym $mod+Shift+n
