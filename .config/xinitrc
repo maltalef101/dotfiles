@@ -10,12 +10,11 @@
 
 # export STATUSBAR="i3blocks" # Uncomment this line when using i3.
 
-. ~/.xprofile
+[ -f ~/.xprofile ] && . ~/.xprofile
 
-# Your default LARBS WM is determined in your `~/.profile` on login.  Here we
+# Your default marbs WM is determined in your `~/.profile` on login.  Here we
 # run the proper command to run when the graphical environment starts.
 
 # Comment/uncomment these lines depending on what wm you want to use. Also
 # check the i3blocks line above.
 exec i3
-
