@@ -87,5 +87,8 @@ bindkey '^e' edit-command-line
 # funny lol
 fortune | cowsay -f tux
 
+# change keymap to spanish because taco tortilla:
+setxkbmap es
+
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
