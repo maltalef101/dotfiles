@@ -1,7 +1,6 @@
 syntax on
 
-set guicursor+=a:blinkon1
-set guicursor+=a:block-Cursor
+set guicursor+=v-n-c:block-Cursor
 set nohlsearch
 set hidden
 set noerrorbells
@@ -22,7 +21,7 @@ set incsearch
 set termguicolors
 set scrolloff=8
 set formatoptions+=tcroqj
-
+highlight Normal guibg=none
 " Give more space for displaying messages.
 set cmdheight=2
 
@@ -102,6 +101,7 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 colorscheme gruvbox
 set background=dark
+highlight Normal guibg=none
 
 if executable('rg')
     let g:rg_derive_root='true'
