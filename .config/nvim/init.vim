@@ -16,8 +16,12 @@ set smartcase
 set noswapfile
 set nobackup
 set undodir=~/.config/nvim/undodir
+set path+=**
+set wildignore=**/node_modules/**
 set undofile
 set incsearch
+set splitright
+set splitbelow
 set termguicolors
 set scrolloff=8
 set formatoptions+=tcroqj
@@ -82,6 +86,9 @@ let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_auto_sameids = 1
 
+" vim-airline settings
+let g:airline#extensions#tabline#enabled = 1
+
 " nerdcommenter config
 let g:NERDSpaceDelims = 1       " adds space between comments and code
 
@@ -92,7 +99,7 @@ let g:coc_global_extensions = [
     \ 'coc-tsserver',
     \ 'coc-eslint',
     \ 'coc-prettier',
-    \ 'coc-json', 
+    \ 'coc-json',
     \ ]
 
 " prettier command for coc
@@ -123,7 +130,7 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 nnoremap <leader>z :split<CR>
 nnoremap <leader>v :vsplit<CR>
-nnoremap <leader>pv :NERDTreeToggle<CR>
+noremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 nnoremap <Leader>ps :Rg<SPACE>
 nnoremap <C-p> :GFiles<CR>
 nnoremap <Leader>pf :Files<CR>
@@ -138,7 +145,6 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 " Comment multiple lines using nerdcommenter
 map ++ <plug>NERDCommenterToggle
-
 
 " arrow keys disable:
 vnoremap <Up> <Nop>
@@ -190,3 +196,11 @@ nnoremap <leader>cr :CocRestart
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
+
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+
+autocmd BufWritePre * :call TrimWhitespace()
