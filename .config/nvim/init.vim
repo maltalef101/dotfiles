@@ -40,11 +40,11 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
+" Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tweekmonster/gofmt.vim'
 " Git-related plugins
 Plug 'tpope/vim-fugitive'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 " Aesthetic stuff
 Plug 'ryanoasis/vim-devicons'
@@ -63,11 +63,17 @@ Plug 'rstacruz/vim-hyperstyle'
 Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'phanviet/vim-monokai-pro'
+" Status bar/Tab bar/Buffer bar
 Plug 'vim-airline/vim-airline'
 Plug 'flazz/vim-colorschemes'
 Plug '/home/mpaulson/personal/vim-be-good'
 
 call plug#end()
+
+" airline config
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_tabs = 1
 
 " --- vim go (polyglot) settings.
 let g:go_highlight_build_constraints = 1
@@ -85,9 +91,6 @@ let g:go_highlight_generate_tags = 1
 let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_auto_sameids = 1
-
-" vim-airline settings
-let g:airline#extensions#tabline#enabled = 1
 
 " nerdcommenter config
 let g:NERDSpaceDelims = 1       " adds space between comments and code
@@ -145,6 +148,11 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 " Comment multiple lines using nerdcommenter
 map ++ <plug>NERDCommenterToggle
+
+" tabs keybinds
+nnoremap <leader>n :tabnew<CR>
+nnoremap <leader><Tab> :tabnext<CR>
+nnoremap <leader><S-Tab> :tabprev<CR>
 
 " arrow keys disable:
 vnoremap <Up> <Nop>
