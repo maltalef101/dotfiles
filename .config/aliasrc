@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Use neovim for vim if present.
-command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
@@ -24,15 +24,6 @@ alias \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi"
 
-# Config files edit commands.
-alias \
-    i3c="nvim $HOME/.config/i3/config" \
-    nvc="nvim $HOME/.config/nvim/init.vim" \
-    zrc="nvim $HOME/.config/zsh/.zshrc" \
-    zpf="nvim $HOME/.zprofile" \
-    pbc="nvim $HOME/.config/polybar/config"
-
-
 # These common commands are just too long! Abbreviate them.
 alias \
 	ka="killall" \
@@ -43,6 +34,7 @@ alias \
 	v="$EDITOR" \
 	p="sudo pacman" \
 	z="zathura" \
+    o="openfile" \
     srr="xset r rate 170 40"
 
 # Git aliases:
@@ -53,11 +45,11 @@ alias \
     gpl="git pull" \
     gps="git push" \
     ga="git add" \
+    gdf="git diff" \
     gc="git commit" \
     gcm="git commit -m"
 
 alias \
-	magit="nvim -c MagitOnly" \
 	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" \
 	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
 	tmux="tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf" \
