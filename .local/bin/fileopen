@@ -1,0 +1,11 @@
+#! /bin/sh
+# Script for handling opening files
+# Used in lf and in general file opening matters
+
+# Made by Manuel Altalef
+
+case $(file --mime-type "$1" -bL) in
+    text/*|application/json) $EDITOR "$1";;
+    video/*|image/*/application/pdf) xdg-open "$1";;
+    *) xdg-open "$1" ;;
+esac
