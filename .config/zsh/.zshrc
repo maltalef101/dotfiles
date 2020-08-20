@@ -1,3 +1,5 @@
+# zoomer shell config
+
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
@@ -40,6 +42,7 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
+bindkey '^ ' accept-line # accept suggestions
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
@@ -89,6 +92,9 @@ fortune | cowsay -f tux
 
 # change keymap to spanish because taco tortilla:
 setxkbmap es
+
+# load nvm plugin
+source /usr/share/zsh/plugins/nvm/nvm.plugin.zsh 2> /dev/null
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
