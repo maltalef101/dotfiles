@@ -1,0 +1,29 @@
+#!/bin/sh
+
+case $BLOCK_BUTTON in
+	1) notify-send "This Month" "$(cal --color=always | sed "s/..7m/<b><span color=\"red\">/;s/..27m/<\/span><\/b>/")" && notify-send "Appointments" "$(calcurse -d3)" ;;
+	2) setsid -f "$TERMINAL" -e calcurse ;;
+	3) notify-send "📅 Time/date module" "\- Left click to show upcoming appointments for the next three days via \`calcurse -d3\` and show the month via \`cal\`
+- Middle click opens calcurse if installed" ;;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+clock=$(date '+%I')
+
+case "$clock" in
+	"00") clockicon="🕛" ;;
+	"01") clockicon="🕐" ;;
+	"02") clockicon="🕑" ;;
+	"03") clockicon="🕒" ;;
+	"04") clockicon="🕓" ;;
+	"05") clockicon="🕔" ;;
+	"06") clockicon="🕕" ;;
+	"07") clockicon="🕖" ;;
+	"08") clockicon="🕗" ;;
+	"09") clockicon="🕘" ;;
+	"10") clockicon="🕙" ;;
+	"11") clockicon="🕚" ;;
+	"12") clockicon="🕛" ;;
+esac
+
+printf "📅$(date "+%a %d %b $clockicon%R:%S")"
