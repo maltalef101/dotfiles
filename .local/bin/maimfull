@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# This is bound to Shift+PrintScreen by default, requires maim. This script
+# takes a fullscreen screenshot. If you want to take a selective screenshot,
+# press PrintScreen only, this runs maimsel.
+
+filename="$(date "+%s").png"
+savedir="$HOME/pictures/00screenshots/$(date "+%m-%Y")"
+
+[ -d "$savedir" ] || mkdir $savedir
+
+maim -u -f png -m 5 "$savedir/$filename"
+xclip "$savedir/$filename" -selection clipboard -t image/png

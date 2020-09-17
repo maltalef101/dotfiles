@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# This is bound to PrintScreen by default, requires maim. This script
+# lets you take a screenshot, by selecting with your mouse an area or
+# window to take. I don't really take full screen screenshots, so
+# if you want to take one, press Shift+PrintScreen, that runs maimfull.
+
+filename="$(date "+%s").png"
+savedir="$HOME/pictures/00screenshots/$(date "+%m-%Y")"
+
+[ -d "$savedir" ] || mkdir $savedir
+
+maim -u -c 255,0,0 -f png -m 5 -s "$savedir/$filename"
+xclip "$savedir/$filename" -selection clipboard -t image/png
