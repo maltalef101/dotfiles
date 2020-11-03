@@ -1,0 +1,13 @@
+#! /bin/sh
+
+# creates an executable file
+# bc i am very lazy
+cd $HOME/.local/bin
+
+[ -e "$1" ] && { echo "Script $1 already exists! Exiting."; exit 1 ;}
+
+touch "$1"
+chmod +x "$1"
+echo "#! /bin/sh" >> "$1"
+
+cd $HOME

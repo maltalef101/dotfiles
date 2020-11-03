@@ -12,9 +12,15 @@
 
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-# Your default marbs WM is determined in your `~/.profile` on login.  Here we
+# Your default Minux WM is determined in your `~/.profile` on login.  Here we
 # run the proper command to run when the graphical environment starts.
 
 # Comment/uncomment these lines depending on what wm you want to use. Also
 # check the i3blocks line above.
-exec i3
+
+# GnuPG agent stuff yeah yeah
+if [ -x /usr/bin/gpg-agent ]; then
+	eval "$(/usr/bin/gpg-agent --daemon)"
+fi
+
+dwm

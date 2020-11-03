@@ -13,7 +13,8 @@ syntax on
     set nowrap
 " add system clipboard. makes using p and P much easier
     set clipboard+=unnamedplus
-" only does case sensitive searching if the search term has upper case characters
+" only does case sensitive searching if the search term has upper
+" case characters
     set smartcase
 " don't use swapfiles for buffers
     set noswapfile
@@ -27,11 +28,9 @@ syntax on
 " removes the retarded vim splitting defaults
     set splitright splitbelow
 " uses 24-bit colors
-    if has("termguicolors")
-        set termguicolors
-    endif
-" how many lines from cursor to the end of the viewport until it scrolls
-    set scrolloff=10
+	if has("termguicolors")
+		set termguicolors
+	endif
 " removes autocommenting for new lines
     set formatoptions=tqjl
 " give more space for displaying messages.
@@ -51,6 +50,7 @@ syntax on
     colorscheme gruvbox
     set background=dark
     highlight Normal guibg=none
+	let g:gruvbox_italics='1'
 
 " better leader key
     let mapleader = " "

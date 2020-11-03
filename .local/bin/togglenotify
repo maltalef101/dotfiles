@@ -1,0 +1,14 @@
+#! /bin/sh
+
+pidof dunst >/dev/null 2>&1 || exit 1
+
+pauseState=$(dunstctl is-paused)
+
+if [ "$pauseState" = "false" ]; then
+	notify-send -u normal "🔔 Notifications" "Notifications turned OFF"
+	sleep 4
+	dunstctl set-paused true
+elif [ "$pauseState" = "true" ]; then
+	dunstctl set-paused false
+	notify-send -u normal "🔔 Notifications" "Notifications turned ON"
+fi

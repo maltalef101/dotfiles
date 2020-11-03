@@ -1,0 +1,183 @@
+# vim: filetype=conf
+
+# Basic Settings
+set preview true
+set previewer preview
+#set previewer pistol
+set hidden true
+set color256 true
+set drawbox true
+set icons true
+set ignorecase true
+
+# Custom Functions
+cmd open $fileopen "$f"
+
+cmd mkdir %{{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}}
+
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+
+cmd chmod %{{
+  printf "Mode Bits: "
+  read ans
+
+  for file in "$fx"
+  do
+    chmod $ans $file
+  done
+}}
+
+cmd sudomkfile ${{
+  printf "File Name: "
+  read ans
+  sudo $EDITOR $ans
+}}
+
+
+cmd fzf_jump ${{
+  res="$(find . -maxdepth 3 | fzf --reverse --header='Jump to location')"
+  if [ -f "$res" ]; then
+    cmd="select"
+  elif [ -d "$res" ]; then
+    cmd="cd"
+  fi
+  lf -remote "send $id $cmd \"$res\""
+}}
+
+cmd bulk_move ${{
+# uses qmv (from package renameutils) for bulk moving
+	qmv -f do "$fx"
+}}
+
+# cmd broot_jump ${{
+  # f=$(mktemp)
+  # res="$(broot --outcmd $f && cat $f | sed 's/cd //')"
+  # rm -f "$f"
+  # if [ -f "$res" ]; then
+    # cmd="select"
+  # elif [ -d "$res" ]; then
+    # cmd="cd"
+  # fi
+  # lf -remote "send $id $cmd \"$res\""
+# }}
+
+# cmd open_config  ${{
+  # $EDITOR $(bookmenu -b ~/.config/bookmenu/configs -f fzf -o)
+# }}
+
+cm% dragon %dragon-drag-and-drop -a -x $fx
+cmd cpdragon %cpdragon
+cmd mvdragon %mvdragon
+cmd dlfile %dlfile
+
+# Archive bindings
+cmd unarchive ${{
+  case "$f" in
+      *.zip) unzip "$f" ;;
+      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+
+cmd zip %zip -r "$f" "$f"
+cmd tar %tar cvf "$f.tar" "$f"
+cmd targz %tar cvzf "$f.tar.gz" "$f"
+cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
+
+cmd remove %rm "$fx"
+
+# cmd clear_trash %trash-empty
+
+# cmd restore_trash ${{
+  # trash-restore
+# }}
+
+# cmd stripspace %stripspace "$f"
+
+# Bindings
+# Remove some defaults
+map o
+map n
+map m
+map "'"
+map '"'
+map d
+map c
+map e
+map f
+
+# File Openers
+map ee $$EDITOR "$f"
+map u $view "$f"
+
+# Archive Mappings
+map az zip
+map at tar
+map ag targz
+map ab targz
+map au unarchive
+
+# Trash Mappings
+map dd remove
+
+# Broot Mapping
+# map f broot_jump
+map f fzf_jump
+
+# Dragon Mapping
+map dr dragon
+map dm mvdragon
+map dc cpdragon
+map dl dlfile
+
+map ss stripspace
+
+# Basic Functions
+map . set hidden!
+map DD delete
+map p paste
+map x cut
+map y copy
+map mv bulk_move
+map <enter> open
+map mf mkfile
+map mr sudomkfile
+map dr mkdir
+map ms $mkscript
+map ch chmod
+map bg setwallpaper
+map o open_config
+map br $vimv $fx
+map r rename
+map H top
+map L bottom
+map R reload
+map C clear
+map U unselect
+
+# commonly used directories
+map gst cd ~/00storage
+map gcl cd ~/00cell
+map gmm cd ~/music
+map gd. cd ~/documents
+map gD. cd ~/downloads
+map gbb cd ~/documents/bib
+map gdv cd ~/dev
+map gvv cd ~/videos
+map gp. cd ~/pictures
+map gps cd ~/pictures/00screenshots
+
+map gcf cd ~/.config
+map gca cd ~/.cache
+map gsr cd ~/.local/share
+map gsc cd ~/.local/bin

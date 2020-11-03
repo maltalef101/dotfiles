@@ -7,7 +7,6 @@
 alias \
 	cp="cp -v" \
 	mv="mv -v" \
-	rm="rm -v" \
 	mkd="mkdir -pv" \
 	ffmpeg="ffmpeg -hide_banner"
 
@@ -32,10 +31,17 @@ alias \
 	f="$FILE" \
 	e="$EDITOR" \
 	v="$EDITOR" \
-	p="sudo pacman" \
+	vw="nvim $HOME/vimwiki/index.md" \
 	z="zathura" \
-    o="openfile" \
-    srr="xset r rate 170 40"
+    o="fileopen" \
+    abook="abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook; rmdir ~/.abook" \
+	yta="youtube-dl -x -f bestaudio/best" \
+	scim="sc-im" \
+
+# pacman/yay aliases
+alias \
+	p="sudo pacman" \
+    syu="popupgrade" \
 
 # Git aliases:
 alias \
@@ -48,6 +54,7 @@ alias \
     gdf="git diff" \
     gc="git commit" \
     gcm="git commit -m"
+
 
 alias \
 	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" \

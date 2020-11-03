@@ -1,0 +1,22 @@
+#! /bin/sh
+
+# Systematically type out a string of text and press enter
+# I use to spam people I find annoying or want to get
+# attention from. Use at your own will.
+
+read -p "Enter the string of text that you want it to be typed: " text
+read -p "How many times do you want it to be typed? " quantity
+
+echo "Quick! Put your cursor in the messagebox/whatever you want the text to be typed in! You have 5 (five) seconds."
+
+sleep 5
+
+cnt=0
+
+while [ $cnt -ne $quantity ] ; do
+	xdotool type "$text"
+	xdotool key Return
+	sleep 0.5
+
+	let "cnt++"
+done

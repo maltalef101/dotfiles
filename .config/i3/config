@@ -15,8 +15,8 @@ set $gaps 7
 set $mod Mod4
 # set $alt mod1
 font pango:System San Francisco Display 11
-set $shutdown sudo -A shutdown now
-set $reboot sudo -A reboot
+set $shutdown sudo shutdown now
+set $reboot sudo reboot
 set $netrefresh --no-startup-id sudo systemctl restart NetworkManager
 set $hibernate sudo systemctl suspend
 # env variables
@@ -24,7 +24,7 @@ set $browser $BROWSER
 set $term $TERMINAL
 set $player "spotify"
 set $reader $READER
-set $weather 'st -n weather -e "curl https://www.wttr.in; read doodoo"'
+set $weather 'st -n weather -e less $HOME/.local/share/weatherreport'
 
 floating_modifier $mod
 
@@ -47,7 +47,7 @@ for_window [instance="dropdown_*"] scratchpad show
 
 
 
-#---# plasma compatibility #---# (i use this, but you may not)
+#---# plasma compatibility #---# (if running on top of plasma, use this.)
 for_window [title="Desktop - Plasma"] kill
 for_window [class="plasmashell"] kill
 
@@ -72,6 +72,9 @@ for_window [title="Discord Updater"] floating enable
 # scratchpad
 for_window [instance="floatterm"] move scratchpad
 
+# pulsemixer
+for_window [class="pulsemixer"] floating enable
+
 # wttr.in
 for_window [instance="weather"] floating enable
 for_window [instance="weather"] resize set 1124 755
@@ -87,9 +90,6 @@ exec $term -n floatterm
 
 # redshift for / w A r M n E s S /
 exec redshift -c $HOME/.config/redshift/redshift.conf
-
-# wallpaper
-exec_always feh --bg-scale $HOME/wallpaper.png
 
 # picom:
 exec_always picom --config $HOME/.config/picom/picom.conf
@@ -116,7 +116,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 
 #---# status bar with polybar #---#
-exec_always $HOME/.local/bin/launchbar
+exec_always $HOME/.local/bin/wm-scripts/launchbar
 
 
 #---# status bar with i3xrocks (DEPRECATED) #---#
@@ -165,7 +165,7 @@ bindsym $mod+r                       exec $term -e lf
 # bindsym $mod+Shift+r
 
 bindsym $mod+t                       layout toggle split
-bindsym $mod+Shift+t                 exec $term -n weather -e curl https://www.wttr.in
+bindsym $mod+Shift+t                 exec st -n weather -e less $HOME/.local/share/weatherreport
 
 bindsym $mod+y                       exec $term -e irssi
 bindsym $mod+Shift+y                 resize shrink width 10 px
@@ -216,11 +216,11 @@ bindsym $mod+z                       exec $reader
 # bindsym $mod+x
 # bindsym $mod+Shift+x
 
-bindsym $mod+c                       exec playerctl --player=spotify next
-bindsym $mod+Shift+c                 exec playerctl --player=spotify previous
+# bindsym $mod+c
+# bindsym $mod+Shift+c
 
 bindsym $mod+v                       bar mode toggle
-# bindsym $mod+Shift+v
+bindsym $mod+Shift+v                 exec $term -c pulsemixer -e pulsemixer
 
 bindsym $mod+b                       floating toggle; sticky toggle; exec --no-startup-id $HOME/.local/bin/wm-scripts/hover right
 bindsym $mod+Shift+b                 exec --no-startup-id $HOME/.local/bin/wm-scripts/hover right
@@ -235,6 +235,8 @@ bindsym $mod+Ctrl+b                  exec --no-startup-id $HOME/.local/bin/wm-sc
 # STOP/HIDE EVERYTHING
 bindsym $mod+Shift+Delete            workspace $ws11; exec playerctl --all-players stop; exec $term -e htop; exec $term -e lf
 
+bindsym $mod+greater                 exec playerctl --player=spotify next
+bindsym $mod+Shift+greater           exec playerctl --player=spotify previous
 
 
 #---# workspace bindings #---#
@@ -286,7 +288,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 #---# function keys #---#
 # bindsym $mod+F1
-bindsym $mod+F2                      restart
+bindsym $mod+F2                      restart, reload
 # bindsym $mod+F3
 # bindsym $mod+F4
 bindsym $mod+F5                      exec --no-startup-id $netrefresh

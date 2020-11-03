@@ -1,4 +1,12 @@
 # vim: filetype=dosini
+[colors]
+foreground = #f3f4f5
+alt-foreground = #676E6D
+background = #121212
+alert = #cc241d
+
+
+
 [bar/maltalef]
 enable-ipc = true
 monitor =
@@ -28,20 +36,13 @@ module-margin = 1
 tray-position = right
 
 
-[colors]
-foreground = #f3f4f5
-alt-foreground = #676E6D
-background = #121212
-alert = #E53935
-
-
 
 [module/cpu]
 type = internal/cpu
 interval = 2
 format-prefix-foreground = ${colors.foreground}
 format-underline = #ffffff
-label = %percentage%
+label = %percentage%%
 
 
 

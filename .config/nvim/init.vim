@@ -4,22 +4,13 @@
 " | | | | | | | | | |_   _   \ V /  | | | | | | | |
 " |_| |_| |_| |_|  \__| (_)   \_/   |_| |_| |_| |_|
 
-source ~/.config/nvim/plugins.vim
+source ~/.config/nvim/plugconfig/plugins.vim
 source ~/.config/nvim/basic-settings.vim
-source ~/.config/nvim/remaps.vim
-source ~/.config/nvim/custom-functions.vim
-source ~/.config/nvim/custom-commands.vim
-
-" ---------- Plugins ---------- "
-source ~/.config/nvim/fugitive.vim
-source ~/.config/nvim/airline.vim
-source ~/.config/nvim/fern.vim
-source ~/.config/nvim/coc.vim
-source ~/.config/nvim/fzf.vim
-source ~/.config/nvim/vimtex.vim
-source ~/.config/nvim/delimitMate.vim
-source ~/.config/nvim/nerdcommenter.vim
-source ~/.config/nvim/gitgutter.vim
-
-" ---------- basic AutoCmd ---------- "
-source ~/.config/nvim/autocmd.vim
+source ~/.config/nvim/plugconfig/coc.vim
+source ~/.config/nvim/plugconfig/fzf.vim
+source ~/.config/nvim/plugconfig/fern.vim
+source ~/.config/nvim/plugconfig/vimtex.vim
+source ~/.config/nvim/plugconfig/airline.vim
+source ~/.config/nvim/plugconfig/fugitive.vim
+source ~/.config/nvim/plugconfig/gitgutter.vim
+source ~/.config/nvim/plugconfig/nerdcommenter.vim

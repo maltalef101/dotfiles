@@ -1,42 +1,106 @@
+
+
+# .config/calcurse/
+# .config/fontconfig/
+# .config/gtk-2.0/
+# .config/joplin-desktop/
+# .config/joplin/
+# .config/lf/
+# .config/mpd/
+# .config/ncmpcpp/
+# .config/newsboat/
+# .config/nvim/ftdetect/
+# .config/nvim/ftplugin/
+# .config/nvim/plugconfig/
+# .config/nvim/plugin/
+# .config/nvim/spell/
+# .config/pcmanfm/
+# .config/qutebrowser/
+# .config/rtv/
+# .config/tmux/
+# .config/vifm/
+# .config/zathura/
+# .config/zsh/common.zsh-theme
+# .local/bin/booksplit
+# .local/bin/dmenurecord
+# .local/bin/ext
+# .local/bin/lf/
+# .local/bin/mks
+# .local/bin/movetocenter
+# .local/bin/nettesting/
+# .local/bin/personal/
+# .local/bin/reaptype
+# .local/bin/rotdir
+# .local/bin/sysact
+# .local/bin/tag
+# .local/bin/togglenotify
+# .local/share/minux/emoji
+# .local/share/minux/wallpapers/
 .Xauthority
-.local/share/weatherreport
 .audacity-data/
 .bash_logout
 .bash_profile
 .bashrc
+.cache/
 .config/BraveSoftware
+.config/Electron/
 .config/GIMP
 .config/Insomnia/
+.config/Joplin/
 .config/Kitware
+.config/Notepadqq/
 .config/QtProject.conf
 .config/RexuizDev
 .config/Thunar/
 .config/Unknown\ Organization/
 .config/VirtualBox
+.config/abook/
 .config/cef_user_data
+.config/coc/
 .config/configstore/
+.config/conky-manager.json
 .config/dconf
+.config/discord-rpc/
 .config/discord/
+.config/discordcanary
+.config/dragonplayerrc
+.config/exercism/
+.config/fontforge
+.config/freerdp/
+.config/gh/
 .config/htop/
+.config/inkscape/
+.config/krdcrc
+.config/kritadisplayrc
+.config/kritarc
+.config/libfm/
 .config/libreoffice
+.config/lutris/
 .config/mimeapps.list
 .config/msmtp/
 .config/mutt/
 .config/neofetch
+.config/notmuch-config
 .config/npm
 .config/nvim/.netrwhist
 .config/nvim/plugged
 .config/nvim/undodir
 .config/nvm/
+.config/obs-studio
 .config/pulse
+.config/shortcutrc
 .config/spotify
 .config/transmission-daemon/dht.dat
 .config/transmission-daemon/resume/
 .config/transmission-daemon/stats.json
 .config/transmission-daemon/torrents/
+.config/unity3d/
+.config/user-dirs.dirs
+.config/user-dirs.locale
+.config/vfetch/
+.config/wget/
 .config/xfce4/
 .config/zoomus.conf
-.config/zsh/.zcompdump
 .config/zsh/.zcompdump
 .config/zshnameddirrc
 .electron-gyp/
@@ -46,9 +110,18 @@
 .java/
 .local/include
 .local/lib
+.local/share/.org.chromium.Chromium.Q5Yjk3
+.local/share/Smart\ Code\ ltd/
 .local/share/Steam
+.local/share/Valve Corporation/
+.local/share/applications/mimeinfo.cache
+.local/share/applications/wine*
+.local/share/binding of isaac afterbirth/
 .local/share/calcurse
+.local/share/cargo
 .local/share/cool-retro-term/
+.local/share/crypto-prices/
+.local/share/dwm
 .local/share/fonts
 .local/share/gnupg/
 .local/share/go/
@@ -56,22 +129,41 @@
 .local/share/gvfs-metadata/
 .local/share/history
 .local/share/icons/
+.local/share/keyrings
+.local/share/krdc/
+.local/share/krita-sysinfo.log
+.local/share/krita.log
 .local/share/lf
+.local/share/lutris/
 .local/share/mail/
+.local/share/mime/
+.local/share/moonphase
+.local/share/mpd/
+.local/share/newsboat/
 .local/share/node_repl_history
+.local/share/npm
 .local/share/nvim
 .local/share/password-store/
 .local/share/qutebrowser/
 .local/share/recently-used.xbel
+.local/share/rtv/
+.local/share/rustup/
 .local/share/src/
+.local/share/vinagre/
 .local/share/vulkan
+.local/share/weatherreport
 .local/share/webkitgtk
+.local/share/wineprefixes/
 .local/share/xorg
 .local/share/zathura
+.local/src
+.mailcap
 .mbsyncrc
 .minecraft
 .npm/
 .nvidia-settings-rc
+.pam-gnupg
+.pam_environment
 .pki
 .pulse-cookie
 .python_history
@@ -83,13 +175,23 @@
 .steampid
 .urlview
 .vim
+.vpython-root/
+.vpython_cipd_cache/
+.w3m/
+.wget-hsts
 .zoom
+00storage
 00storage/
 Desktop/
 VirtualBox VMs/
+Xauthority
 arch-rice-test
+dev
 dev/
 documents/
 downloads/
+memes/
+music
 pictures/
+rustlings
 videos/
