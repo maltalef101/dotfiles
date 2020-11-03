@@ -36,6 +36,7 @@ alias \
     o="fileopen" \
     abook="abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook; rmdir ~/.abook" \
 	yta="youtube-dl -x -f bestaudio/best" \
+	ytdl="youtube-dl" \
 	scim="sc-im" \
 
 # pacman/yay aliases
