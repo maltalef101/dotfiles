@@ -1,0 +1,7 @@
+#! /bin/sh
+
+# Pings a host and notifies if it doesn't respond.
+# Made for monitoring my unstable home server.
+# I have it run via cron every minute.
+
+ping -c 4 $1 >/dev/null || notify-send -u critical "🖥️ Check Status" "$1 IS OFFLINE"

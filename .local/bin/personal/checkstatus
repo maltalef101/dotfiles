@@ -1,7 +1,0 @@
-#! /bin/sh
-
-server="10.0.102.250"
-
-pingStatus=$(ping -c 4 $server >/dev/null; echo $?)
-
-[ $pingStatus ] || notify-send -u high "🖥️  Check Statu"  "$server IS DOWN!"

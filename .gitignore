@@ -28,7 +28,6 @@
 # .local/bin/mks
 # .local/bin/movetocenter
 # .local/bin/nettesting/
-# .local/bin/personal/
 # .local/bin/reaptype
 # .local/bin/rotdir
 # .local/bin/sysact
@@ -108,6 +107,7 @@
 .gnupg
 .irssi/
 .java/
+.local/bin/personal/
 .local/include
 .local/lib
 .local/share/.org.chromium.Chromium.Q5Yjk3
