@@ -1,6 +1,8 @@
 
 
 # .config/calcurse/
+.config/coc/**
+!.config/coc/ultisnips/*
 # .config/fontconfig/
 # .config/gtk-2.0/
 # .config/joplin-desktop/
@@ -55,7 +57,6 @@
 .config/VirtualBox
 .config/abook/
 .config/cef_user_data
-.config/coc/
 .config/configstore/
 .config/conky-manager.json
 .config/dconf
