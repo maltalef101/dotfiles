@@ -1,0 +1,14 @@
+#! /bin/sh
+
+# Fuzzy find in the scripts directory
+# and open the result in an editor.
+
+prevpwd=$(pwd)
+
+cd ~/.local/bin
+
+searchResult=$(fzf --height=50%)
+
+[ -n "$searchResult" ] && nvim $searchResult
+
+cd $prevpwd

@@ -39,6 +39,7 @@ alias \
 	ytdl="youtube-dl" \
 	scim="sc-im" \
 
+
 # pacman/yay aliases
 alias \
 	p="sudo pacman" \
