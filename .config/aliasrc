@@ -31,7 +31,6 @@ alias \
 	f="$FILE" \
 	e="$EDITOR" \
 	v="$EDITOR" \
-	vw="nvim $HOME/vimwiki/index.md" \
 	z="zathura" \
     o="fileopen" \
     abook="abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook; rmdir ~/.abook" \
