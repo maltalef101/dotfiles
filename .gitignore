@@ -55,8 +55,8 @@
 .config/VirtualBox
 .config/abook/
 .config/cef_user_data
-.config/coc/**
-!\.config/coc/ultisnips/*
+.config/coc/*
+!.config/coc/ultisnips
 .config/configstore/
 .config/conky-manager.json
 .config/dconf
