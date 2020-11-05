@@ -7,6 +7,7 @@
 # Add this when you include flatpak in your system
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
+dwmblocks &                                         # Starts statusbar
 remaps &		                                    # run the remaps script, switching caps/esc and more; check it for more info
 setbg &			                                    # set the background with the `setbg` script
 picom --config $HOME/.config/picom/picom.conf &	    # picom for transparency
@@ -17,5 +18,3 @@ mpdup &												# mpdup for updating the music player daemon, runs as a loop
 sxhkd &                                             # shkd for non-modkey bindings
 clipmenud &											# clipmenud because the X clipboard is pretty scuffed
 nm-applet &											# network-manager-applet for, well... managing networks
-
-dwmblocks &                                         # Starts statusbar

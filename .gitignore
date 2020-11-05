@@ -1,5 +1,6 @@
 
 
+!.config/coc/ultisnips
 # .config/calcurse/
 # .config/fontconfig/
 # .config/gtk-2.0/
@@ -54,9 +55,9 @@
 .config/Unknown\ Organization/
 .config/VirtualBox
 .config/abook/
+.config/autostart
 .config/cef_user_data
 .config/coc/*
-!.config/coc/ultisnips
 .config/configstore/
 .config/conky-manager.json
 .config/dconf
@@ -88,6 +89,7 @@
 .config/nvm/
 .config/obs-studio
 .config/pulse
+.config/remmina
 .config/shortcutrc
 .config/spotify
 .config/transmission-daemon/dht.dat
