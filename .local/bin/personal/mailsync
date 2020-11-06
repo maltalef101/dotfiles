@@ -5,7 +5,7 @@
 
 /usr/local/bin/mw -y maltalef101@gmail.com
 
-unread="$(find "${XDG_DATA_HOME:-$HOME/.local/share}"/mail/*/[Ii][Nn][Bb][Oo][Xx]/new/* -type f | wc -l 2>/dev/null)"
+unread="$(find "${XDG_DATA_HOME:-$HOME/.local/share}"/mail/*/[Ii][Nn][Bb][Oo][Xx]/new/* -type f 2>/dev/null | wc -l 2>/dev/null)"
 [ "$unread" = "0" ] || notify-send -u normal "📬 New mail!" "You have $unread new mail(s)."
 
 pkill -RTMIN+2 dwmblocks
