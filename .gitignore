@@ -1,5 +1,3 @@
-
-
 !.config/coc/ultisnips
 # .config/calcurse/
 # .config/fontconfig/
@@ -92,6 +90,7 @@
 .config/remmina
 .config/shortcutrc
 .config/spotify
+.config/tox
 .config/transmission-daemon/dht.dat
 .config/transmission-daemon/resume/
 .config/transmission-daemon/stats.json
