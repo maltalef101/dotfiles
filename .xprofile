@@ -12,6 +12,7 @@ setbg &			                                    # set the background with the `set
 picom --config $HOME/.config/picom/picom.conf &	    # picom for transparency
 dunst &			                                    # dunst for notifications
 unclutter --timeout 1 --jitter 10 &		            # Remove mouse when idle
+mpd &												# Music Player Daemon for music ofc
 mpdup &												# mpdup for updating the music player daemon, runs as a loop
 sxhkd &                                             # shkd for non-modkey bindings
 dwmblocks &                                         # Starts statusbar
