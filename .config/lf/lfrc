@@ -167,7 +167,7 @@ map U unselect
 
 # commonly used directories
 map gst cd ~/00storage
-map gcl cd ~/00cell
+# map gcl cd ~/00cell
 map gmm cd ~/music
 map gd. cd ~/documents
 map gD. cd ~/downloads
@@ -181,3 +181,6 @@ map gcf cd ~/.config
 map gca cd ~/.cache
 map gsr cd ~/.local/share
 map gsc cd ~/.local/bin
+
+map gcl. cd ~/00storage/00colegio
+map gcl4 cd ~/00storage/00colegio/c\;\;\ cuarto\ año

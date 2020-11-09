@@ -35,6 +35,7 @@
 # .local/share/minux/emoji
 # .local/share/minux/wallpapers/
 .Xauthority
+.android/
 .audacity-data/
 .bash_logout
 .bash_profile
@@ -181,6 +182,7 @@
 .w3m/
 .wget-hsts
 .zoom
+00cell/
 00storage
 00storage/
 Desktop/
