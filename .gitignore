@@ -41,6 +41,7 @@
 .bash_profile
 .bashrc
 .cache/
+.cddb
 .config/BraveSoftware
 .config/Electron/
 .config/GIMP
@@ -123,7 +124,6 @@
 .local/share/cargo
 .local/share/cool-retro-term/
 .local/share/crypto-prices/
-.local/share/dwm
 .local/share/fonts
 .local/share/gnupg/
 .local/share/go/
@@ -151,6 +151,7 @@
 .local/share/rtv/
 .local/share/rustup/
 .local/share/src/
+.local/share/user-places*
 .local/share/vinagre/
 .local/share/vulkan
 .local/share/weatherreport
