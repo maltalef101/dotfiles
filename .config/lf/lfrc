@@ -54,7 +54,7 @@ cmd fzf_jump ${{
 
 cmd bulk_move ${{
 # uses qmv (from package renameutils) for bulk moving
-	qmv -f do "$fx"
+	qmv -f do $(echo $(basename $fx) | xargs)
 }}
 
 # cmd broot_jump ${{
