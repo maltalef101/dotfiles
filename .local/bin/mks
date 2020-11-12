@@ -14,5 +14,6 @@ cd $HOME/.local/bin
 touch "$1"
 chmod +x "$1"
 echo "#! /bin/sh" >> "$1"
+nvim "$1"
 
 cd $HOME
