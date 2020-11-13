@@ -14,3 +14,5 @@ source ~/.config/nvim/plugconfig/airline.vim
 source ~/.config/nvim/plugconfig/fugitive.vim
 source ~/.config/nvim/plugconfig/gitgutter.vim
 source ~/.config/nvim/plugconfig/nerdcommenter.vim
+source ~/.config/nvim/plugconfig/vimspector.vim
+source ~/.config/nvim/plugconfig/maximizer.vim

@@ -51,4 +51,7 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
     Plug 'junegunn/goyo.vim'
 " vimtex because why wouldn't you use it
     Plug 'lervag/vimtex'
+" debbuging in vim!
+	Plug 'puremourning/vimspector'
+	Plug 'szw/vim-maximizer'
 call plug#end()
