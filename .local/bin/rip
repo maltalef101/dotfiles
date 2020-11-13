@@ -1,3 +1,48 @@
 #! /bin/sh
 
+# Requires abcde (CD ripping), flac, and the `tag` wrapper script.
 
+[ ! -f "$1" ] && printf "Specify a file to take the song titles from!\n" && exit 1
+
+# Outputs to flac, can be changed but I wouldn't reccomend it if
+# you're ripping high quality CDs. Check abcde(1) and the tag
+# script for more formats.
+opFormat="flac"
+
+# Assumes this is your music directory.
+cd "$HOME/music"
+
+# Gets the disc information.
+echo "Enter the disc title: "; read cdalbum
+echo "Enter the artist (separated by commas): "; read cdauthor
+echo "Enter the publication year: "; read cdyear
+
+# Get safe names from the artist name and the album book.
+escalbum="$(echo "$cdalbum" | iconv -cf UTF-8 -t ASCII//TRANSLIT | tr -d '[:punct:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed "s/-\+/-/g;s/\(^-\|-\$\)//g")"
+escauthor="$(echo "$cdauthor" | iconv -cf UTF-8 -t ASCII//TRANSLIT | tr -d '[:punct:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed "s/-\+/-/g;s/\(^-\|-\$\)//g")"
+
+! mkdir -p "$escauthor/$escalbum" && echo "Do you have write access in this directory?" && exit 1
+
+# Get the total number of tracks from the number of lines of the titles file.
+total="$(wc -l < "$1")"
+
+# cd to the directory in which the tracks whill be saved.
+cd "$escauthor/$escalbum"
+
+# !!! THIS LINE IS WHAT ACTUALLY RIPS THE CD !!!
+abcde -o "$opFormat" -N
+
+# Tagging of the files.
+track=0
+for filename in $(ls -1); do
+	escfilename="$(echo "$x" | iconv -cf UTF-8 -t ASCII//TRANSLIT | tr -d '[:punct:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed "s/-\+/-/g;s/\(^-\|-\$\)//g")"
+	title="$(sed -n "$track p" "$1")"
+
+	echo "Tagging \"$x\"..." && tag -a "$cdauthor" -A "$cdauthor" -t "$x" -n "$track" -N "$total" -d "$year" "$filename"
+	mv "$filename" "$escfilename"
+
+	track=$((track+1))
+done
+
+# Open the cd tray to signal completion.
+# eject
