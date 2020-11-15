@@ -118,6 +118,8 @@
 .local/share/Smart\ Code\ ltd/
 .local/share/Steam
 .local/share/Valve Corporation/
+.local/share/abook
+.local/share/abook
 .local/share/applications/mimeinfo.cache
 .local/share/applications/wine*
 .local/share/binding of isaac afterbirth/
@@ -149,8 +151,11 @@
 .local/share/password-store/
 .local/share/qutebrowser/
 .local/share/recently-used.xbel
+.local/share/remmina
+.local/share/remmina
 .local/share/rtv/
 .local/share/rustup/
+.local/share/smbcred
 .local/share/src/
 .local/share/user-places*
 .local/share/vinagre/

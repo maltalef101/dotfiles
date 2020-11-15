@@ -33,7 +33,7 @@ alias \
 	v="$EDITOR" \
 	z="zathura" \
     o="fileopen" \
-    abook="abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook; rmdir ~/.abook" \
+    abook="abook -C ~/.config/abook/abookrc --datafile ~/.local/share/abook/addressbook; rmdir ~/.abook" \
 	yta="youtube-dl -x -f bestaudio/best" \
 	ytdl="youtube-dl" \
 	scim="sc-im" \
