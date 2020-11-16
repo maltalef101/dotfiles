@@ -127,6 +127,7 @@
 .local/share/cargo
 .local/share/cool-retro-term/
 .local/share/crypto-prices/
+.local/share/desktop-directories
 .local/share/fonts
 .local/share/gnupg/
 .local/share/go/
