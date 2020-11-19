@@ -8,10 +8,8 @@
 # you're ripping high quality CDs. Check abcde(1) and the tag
 # script for more formats.
 opFormat="flac"
-musicDir="$HOME/music"
 
-# Assumes this is your music directory.
-cd "$musicDir"
+cd "$(pwd)"
 
 # Gets the disc information.
 echo "Enter the disc title: "; read cdalbum
