@@ -117,6 +117,7 @@
 .local/share/.org.chromium.Chromium.Q5Yjk3
 .local/share/Smart\ Code\ ltd/
 .local/share/Steam
+.local/share/Trash
 .local/share/Valve Corporation/
 .local/share/abook
 .local/share/abook
@@ -191,6 +192,7 @@
 .wget-hsts
 .zoom
 00cell/
+00nas
 00storage
 00storage/
 Desktop/

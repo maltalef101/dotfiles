@@ -12,7 +12,5 @@ cfu	${XDG_CONFIG_HOME:-$HOME/.config}/newsboat/urls
 cfn	${XDG_CONFIG_HOME:-$HOME/.config}/newsboat/config
 cfk	${XDG_CONFIG_HOME:-$HOME/.config}/sxhkd/sxhkdrc
 cfl ${XDG_CONFIG_HOME:-$HOME/.config}/lf/lfrc
-# cfi	${XDG_CONFIG_HOME:-$HOME/.config}/i3/config
-# cfb	${XDG_CONFIG_HOME:-$HOME/.config}/i3blocks/config
 # cfmb	${XDG_CONFIG_HOME:-$HOME/.config}/ncmpcpp/bindings
 # cfmc	${XDG_CONFIG_HOME:-$HOME/.config}/ncmpcpp/config
