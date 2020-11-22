@@ -92,6 +92,8 @@
 .config/remmina
 .config/shortcutrc
 .config/spotify
+.config/syncthing
+.config/syncthing-gtk
 .config/tox
 .config/transmission-daemon/dht.dat
 .config/transmission-daemon/resume/
@@ -159,6 +161,7 @@
 .local/share/rustup/
 .local/share/smbcred
 .local/share/src/
+.local/share/syncthing
 .local/share/user-places*
 .local/share/vinagre/
 .local/share/vulkan
@@ -196,6 +199,7 @@
 00storage
 00storage/
 Desktop/
+Phone
 VirtualBox VMs/
 Xauthority
 arch-rice-test
