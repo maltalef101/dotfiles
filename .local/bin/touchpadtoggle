@@ -1,0 +1,8 @@
+#! /bin/sh
+
+touchId="$(xinput | grep -i "touchpad" | awk '{print $6}')"
+
+touchStatus=$(xinput list-props $touchId | grep "Device Enabled" | awk '{print $4}')
+
+[ $touchStatus -eq 1 ] && xinput disable $touchId
+[ $touchStatus -eq 0 ] && xinput enable $touchId
