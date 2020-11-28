@@ -32,6 +32,6 @@ esac
 ## I comment out this option because I update my weatherreport file with a cronjob
 
 # [ "$(stat -c %y "$weatherreport" 2>/dev/null | cut -d' ' -f1)" = "$(date '+%Y-%m-%d')" ] ||
-# 	getforecast
+getforecast
 
 showweather
