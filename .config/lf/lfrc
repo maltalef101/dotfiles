@@ -118,7 +118,7 @@ map f
 
 # File Openers
 map ee $$EDITOR "$f"
-map u $view "$f"
+# map u $view "$f"
 
 # Archive Mappings
 map az zip
