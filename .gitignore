@@ -34,6 +34,7 @@
 # .local/bin/togglenotify
 # .local/share/minux/emoji
 # .local/share/minux/wallpapers/
+# .urlview
 .Xauthority
 .android/
 .audacity-data/
@@ -188,7 +189,6 @@
 .steam/
 .steampath
 .steampid
-.urlview
 .vim
 .vpython-root/
 .vpython_cipd_cache/
