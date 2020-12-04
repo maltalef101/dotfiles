@@ -1,0 +1,14 @@
+hash -d cac=/home/maltalef/.cache 
+hash -d cf=/home/maltalef/.config 
+hash -d D=/home/maltalef/downloads 
+hash -d d=/home/maltalef/documents 
+hash -d dv=/home/maltalef/dev 
+hash -d dt=/home/maltalef/.local/share 
+hash -d h=/home/maltalef 
+hash -d mm=/home/maltalef/music 
+hash -d mn=/mnt 
+hash -d pp=/home/maltalef/pictures 
+hash -d sc=/home/maltalef/.local/bin 
+hash -d src=/home/maltalef/.local/src 
+hash -d vv=/home/maltalef/videos 
+hash -d bib=/home/maltalef/documents/bib 
