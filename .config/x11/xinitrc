@@ -13,19 +13,15 @@ if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
 	eval `dbus-launch --sh-syntax`
 fi
 
-# export STATUSBAR="i3blocks" # Uncomment this line when using i3.
-
-[ -f ~/.xprofile ] && ./.xprofile
-
-# Your default Minux WM is determined in your `~/.profile` on login.  Here we
-# run the proper command to run when the graphical environment starts.
-
-# Comment/uncomment these lines depending on what wm you want to use. Also
-# check the i3blocks line above.
-
 # GnuPG agent stuff yeah yeah
 if [ -x /usr/bin/gpg-agent ]; then
 	eval "$(/usr/bin/gpg-agent --daemon)"
+fi
+
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile" ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile"
+else
+	. "$HOME/.xprofile"
 fi
 
 ssh-agent dwm
