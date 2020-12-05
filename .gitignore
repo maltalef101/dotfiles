@@ -7,7 +7,6 @@
 # .config/lf/
 # .config/mpd/
 # .config/ncmpcpp/
-# .config/neofetch
 # .config/newsboat/
 # .config/nvim/ftdetect/
 # .config/nvim/ftplugin/
@@ -83,6 +82,7 @@
 .config/mimeapps.list
 .config/msmtp/
 .config/mutt/
+.config/neofetch/
 .config/notmuch-config
 .config/npm
 .config/nvim/.netrwhist
