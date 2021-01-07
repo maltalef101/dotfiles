@@ -8,7 +8,6 @@
 		"yaml",
 		"json",
 		"python",
-		"rust"
 	],
 	"clangd.path": "/usr/bin/clangd",
 	"python.linting.pylintEnabled": true,
