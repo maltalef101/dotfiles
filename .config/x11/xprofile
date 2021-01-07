@@ -17,4 +17,5 @@ mpdup &												# mpdup for updating the music player daemon, runs as a loop
 sxhkd &                                             # shkd for non-modkey bindings
 clipmenud &											# clipmenud because the X clipboard is pretty scuffed
 nm-applet &											# network-manager-applet for, well... managing networks
+telegram-desktop -startintray &
 setsid -f dwmblocks
