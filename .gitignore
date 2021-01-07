@@ -94,8 +94,10 @@
 .config/remmina
 .config/shortcutrc
 .config/spotify
+.config/supertuxkart
 .config/syncthing
 .config/syncthing-gtk
+.config/telegram-cli
 .config/tox
 .config/transmission-daemon/dht.dat
 .config/transmission-daemon/resume/
@@ -105,6 +107,7 @@
 .config/user-dirs.dirs
 .config/user-dirs.locale
 .config/vfetch/
+.config/weechat
 .config/wget/
 .config/xfce4/
 .config/zoomus.conf
@@ -113,6 +116,7 @@
 .electron-gyp/
 .gitconfig
 .gnupg
+.icons/
 .irssi/
 .java/
 .local/bin/personal
@@ -121,6 +125,7 @@
 .local/share/.org.chromium.Chromium.Q5Yjk3
 .local/share/Smart\ Code\ ltd/
 .local/share/Steam
+.local/share/TelegramDesktop
 .local/share/Trash
 .local/share/Valve Corporation/
 .local/share/abook
@@ -146,6 +151,7 @@
 .local/share/krita.log
 .local/share/lf
 .local/share/lutris/
+.local/share/lyrics
 .local/share/mail/
 .local/share/mime/
 .local/share/moonphase
@@ -155,6 +161,7 @@
 .local/share/npm
 .local/share/nvim
 .local/share/password-store/
+.local/share/picomc
 .local/share/qutebrowser/
 .local/share/recently-used.xbel
 .local/share/remmina
@@ -163,6 +170,7 @@
 .local/share/rustup/
 .local/share/smbcred
 .local/share/src/
+.local/share/supertuxkart
 .local/share/syncthing
 .local/share/user-places*
 .local/share/vinagre/
@@ -180,6 +188,7 @@
 .minecraft
 .npm/
 .nvidia-settings-rc
+.openttd/
 .pam-gnupg
 .pam_environment
 .pki
@@ -192,6 +201,7 @@
 .steampath
 .steampid
 .vim
+.vnc/
 .vpython-root/
 .vpython_cipd_cache/
 .w3m/
