@@ -3,7 +3,7 @@
 # Pings a host and notifies if it doesn't respond.
 # Made for monitoring my unstable home server.
 # I have it run via cron every minute.
- [ -z "$1" ] && echo "Did not provide an address to check status.
+ [ -z "$1" ] && echo "Provide an IP address/hostname to check its online status.
 Usage:
 	checkstatus <addr>" && exit 1
 
