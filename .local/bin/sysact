@@ -12,12 +12,12 @@ input() {
 	case "$1" in
 		shutdown) `${shut:-sudo -A shutdown -h now}` ;;
 		reboot) `${reb:-sudo -A reboot}` ;;
-		hibernate) `${sus:-sudo -A systemctl suspend-then-hibernate}` ;;
-		suspend) `${hib:- sudo -A systemctl suspend}`
+		hibernate) `${hib:-sudo -A systemctl suspend-then-hibernate}` ;;
+		suspend) `${sus:-sudo -A systemctl suspend}`
 	esac
 }
 
-[ -n "$1 " ] && input "$1"
+[ -n "$1 " ] && input "$1"; exit
 
 cmds="\
 🔒 lock		slock
