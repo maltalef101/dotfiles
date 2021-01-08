@@ -5,8 +5,19 @@
 # For non-systemd init systems.
 case "$(readlink -f /sbin/init)" in
 	*runit*) hib="sudo -A zzz" ;;
-	*openrc*) reb="sudo -A openrc-shutdown -r"; shut="sudo -A openrc-shutdown -p" ;;
+	*openrc*) reb="sudo -A openrc-shutdown -r"; shut="sudo -A openrc-shutdown -p"; hib="loginctl hibernate"; sus="loginctl suspend" ;;
 esac
+
+input() {
+	case "$1" in
+		shutdown) `${shut:-sudo -A shutdown -h now}` ;;
+		reboot) `${reb:-sudo -A reboot}` ;;
+		hibernate) `${sus:-sudo -A systemctl suspend-then-hibernate}` ;;
+		suspend) `${hib:- sudo -A systemctl suspend}`
+	esac
+}
+
+[ -n "$1 "] && input "$1"
 
 cmds="\
 🔒 lock		slock
