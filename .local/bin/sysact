@@ -15,9 +15,11 @@ input() {
 		hibernate) `${hib:-sudo -A systemctl suspend-then-hibernate}` ;;
 		suspend) `${sus:-sudo -A systemctl suspend}`
 	esac
+
+	exit
 }
 
-[ -n "$1 " ] && input "$1"; exit
+[ -n "$1" ] && input "$1"
 
 cmds="\
 🔒 lock		slock
