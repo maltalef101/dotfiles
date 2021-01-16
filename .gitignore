@@ -1,3 +1,5 @@
+ ".local/share/applications/userapp-Telegram De
+ sktop-*.desktop"
 !.config/coc/ultisnips
 # .config/calcurse/
 # .config/fontconfig/
@@ -126,6 +128,7 @@
 .local/share/Smart\ Code\ ltd/
 .local/share/Steam
 .local/share/TelegramDesktop
+.local/share/Terraria
 .local/share/Trash
 .local/share/Valve Corporation/
 .local/share/abook
@@ -138,6 +141,7 @@
 .local/share/cool-retro-term/
 .local/share/crypto-prices/
 .local/share/desktop-directories
+.local/share/feral-interactive/
 .local/share/fonts
 .local/share/gnupg/
 .local/share/go/
