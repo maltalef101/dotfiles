@@ -2,8 +2,5 @@
 
 printf "Beginning upgrade.\\n"
 
-yay -Syu
+paru -Syu
 pkill -RTMIN+6 "${STATUSBAR:-dwmblocks}"
-
-printf "\\nUpgrade complete.\\nPress <Enter> to exit window.\\n\\n"
-read -r
