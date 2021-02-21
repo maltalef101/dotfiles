@@ -27,6 +27,7 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
+source $HOME/.config/zsh/plugins/completion.zsh
 
 # vi mode
 bindkey -v
@@ -83,11 +84,18 @@ bindkey '^[[P' delete-char
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
+# directory stack options
+setopt AUTO_PUSHD           # Push the current directory visited on the stack.
+setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
+setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd.
+# creates aliases for each position
+alias ds='dirs -v'
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
+
+setopt correct # correction
+
 # funny lol
 fortune | cowsay -f tux
-
-# change keymap to spanish because taco tortilla:
-remaps
 
 source $HOME/.config/zsh/common.zsh-theme
 
