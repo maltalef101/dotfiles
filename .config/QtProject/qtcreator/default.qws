@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorSession>
-<!-- Written by QtCreator 4.15.0, 2021-05-29T15:07:15. -->
+<!-- Written by QtCreator 4.15.1, 2021-06-18T20:14:08. -->
 <qtcreator>
  <data>
   <variable>CascadeSetActive</variable>
@@ -8,11 +8,11 @@
  </data>
  <data>
   <variable>Color</variable>
-  <value type="QString">#000000</value>
+  <value type="QString">#666666</value>
  </data>
  <data>
   <variable>EditorSettings</variable>
-  <value type="QByteArray">AAAAD0VkaXRvck1hbmFnZXJWNQAAAAUAAABUAC8AaABvAG0AZQAvAG0AYQBsAHQAYQBsAGUAZgAvAGQAZQB2AC8AYwBwAHAALwBwAGwAdQBzAHcAbQAvAHMAcgBjAC8AbQBhAGkAbgAuAGMAcABwAAAADAAAAAAgAAAAAgAAAAAAAAAAAAAAFgAAAAUAAAAAAAAAAAAAABsAAABYAC8AaABvAG0AZQAvAG0AYQBsAHQAYQBsAGUAZgAvAGQAZQB2AC8AYwBwAHAALwBwAGwAdQBzAHcAbQAvAGwAaQBiAC8AdwBtAC8ATABpAGIAVwBNAC4AaAAAAAwAAAAAIAAAAAIAAAAAAAAAAAAAACQAAAACAAAAAAAAAAAAAAAkAAAAXAAvAGgAbwBtAGUALwBtAGEAbAB0AGEAbABlAGYALwBkAGUAdgAvAGMAcABwAC8AcABsAHUAcwB3AG0ALwBsAGkAYgAvAHcAbQAvAEwAaQBiAFcATQAuAGMAcABwAAAADAAAAAAgAAAAAgAAAA0AAAAAAAAAPgAAADEAAAAAAAAADQAAAD8AAABgAC8AaABvAG0AZQAvAG0AYQBsAHQAYQBsAGUAZgAvAGQAZQB2AC8AYwBwAHAALwBwAGwAdQBzAHcAbQAvAGwAaQBiAC8AdQB0AGkAbAAvAEwAaQBiAFUAdABpAGwALgBoAAAADAAAAAAgAAAAAgAAAAAAAAAAAAAACAAAAAEAAAAAAAAAAAAAAAkAAABkAC8AaABvAG0AZQAvAG0AYQBsAHQAYQBsAGUAZgAvAGQAZQB2AC8AYwBwAHAALwBwAGwAdQBzAHcAbQAvAGwAaQBiAC8AdQB0AGkAbAAvAEwAaQBiAFUAdABpAGwALgBjAHAAcAAAAAwAAAAAIAAAAAIAAAAAAAAAAAAAAAEAAAAJAAAAAAAAAAAAAAA0AAAAAwAAAFwALwBoAG8AbQBlAC8AbQBhAGwAdABhAGwAZQBmAC8AZABlAHYALwBjAHAAcAAvAHAAbAB1AHMAdwBtAC8AbABpAGIALwB3AG0ALwBMAGkAYgBXAE0ALgBjAHAAcAAAABIATABpAGIAVwBNAC4AYwBwAHAAAAATQ3BwRWRpdG9yLkMrK0VkaXRvcgAAAABYAC8AaABvAG0AZQAvAG0AYQBsAHQAYQBsAGUAZgAvAGQAZQB2AC8AYwBwAHAALwBwAGwAdQBzAHcAbQAvAGwAaQBiAC8AdwBtAC8ATABpAGIAVwBNAC4AaAAAAA4ATABpAGIAVwBNAC4AaAAAABNDcHBFZGl0b3IuQysrRWRpdG9yAAAAAFQALwBoAG8AbQBlAC8AbQBhAGwAdABhAGwAZQBmAC8AZABlAHYALwBjAHAAcAAvAHAAbAB1AHMAdwBtAC8AcwByAGMALwBtAGEAaQBuAC4AYwBwAHAAAAAQAG0AYQBpAG4ALgBjAHAAcAAAABNDcHBFZGl0b3IuQysrRWRpdG9yAAAAAL8AAAANY3VycmVudGVkaXRvcgAAAFwALwBoAG8AbQBlAC8AbQBhAGwAdABhAGwAZQBmAC8AZABlAHYALwBjAHAAcAAvAHAAbAB1AHMAdwBtAC8AbABpAGIALwB3AG0ALwBMAGkAYgBXAE0ALgBjAHAAcAAAACYAQwBwAHAARQBkAGkAdABvAHIALgBDACsAKwBFAGQAaQB0AG8AcgAAACAAAAACAAAADQAAAAAAAAA+AAAAMQAAAAAAAAANAAAAPwAAAAA=</value>
+  <value type="QByteArray">AAAAD0VkaXRvck1hbmFnZXJWNQAAAAYAAAAuAC8AdQBzAHIALwBpAG4AYwBsAHUAZABlAC8AWAAxADEALwBYAGwAaQBiAC4AaAAAAAwAAAAAJAAAAAIAAAwQAAAAAAAADEMAAAAMAAAAAQAAAAAAAAwoAAAMXgAAACgALwB1AHMAcgAvAGkAbgBjAGwAdQBkAGUALwBYADEAMQAvAFgALgBoAAAADAAAAAAgAAAAAgAAAI4AAAAAAAAAkwAAABMAAAAAAAAAjgAAAMQAAABUAC8AaABvAG0AZQAvAG0AYQBsAHQAYQBsAGUAZgAvAGQAZQB2AC8AYwBwAHAALwBwAGwAdQBzAHcAbQAvAHMAcgBjAC8AbQBhAGkAbgAuAGMAcABwAAAADAAAAAAkAAAAAgAAAAAAAAAAAAAADwAAAAEAAAABAAAAAAAAAAAAAAAcAAAAXAAvAGgAbwBtAGUALwBtAGEAbAB0AGEAbABlAGYALwBkAGUAdgAvAGMAcABwAC8AcABsAHUAcwB3AG0ALwBsAGkAYgAvAHcAbQAvAEwAaQBiAFcATQAuAGMAcABwAAAADAAAAAAkAAAAAgAAAAAAAAAAAAAABgAAAAEAAAABAAAAAAAAAAAAAAA4AAAAaAAvAGgAbwBtAGUALwBtAGEAbAB0AGEAbABlAGYALwBkAGUAdgAvAGMAcABwAC8AcABsAHUAcwB3AG0ALwBsAGkAYgAvAGMAbABpAGUAbgB0AC8ATABpAGIAQwBsAGkAZQBuAHQALgBoAAAADAAAAAAkAAAAAgAAAAAAAAAAAAAAKwAAAAEAAAABAAAAAAAAAAAAAAA0AAAAbAAvAGgAbwBtAGUALwBtAGEAbAB0AGEAbABlAGYALwBkAGUAdgAvAGMAcABwAC8AcABsAHUAcwB3AG0ALwBsAGkAYgAvAGMAbABpAGUAbgB0AC8ATABpAGIAQwBsAGkAZQBuAHQALgBjAHAAcAAAAAwAAAAAJAAAAAIAAABgAAAAAAAAAIcAAAADAAAAAQAAAAAAAABiAAAAlwAAAAMAAABsAC8AaABvAG0AZQAvAG0AYQBsAHQAYQBsAGUAZgAvAGQAZQB2AC8AYwBwAHAALwBwAGwAdQBzAHcAbQAvAGwAaQBiAC8AYwBsAGkAZQBuAHQALwBMAGkAYgBDAGwAaQBlAG4AdAAuAGMAcABwAAAAGgBMAGkAYgBDAGwAaQBlAG4AdAAuAGMAcABwAAAAE0NwcEVkaXRvci5DKytFZGl0b3IAAAAAaAAvAGgAbwBtAGUALwBtAGEAbAB0AGEAbABlAGYALwBkAGUAdgAvAGMAcABwAC8AcABsAHUAcwB3AG0ALwBsAGkAYgAvAGMAbABpAGUAbgB0AC8ATABpAGIAQwBsAGkAZQBuAHQALgBoAAAAFgBMAGkAYgBDAGwAaQBlAG4AdAAuAGgAAAATQ3BwRWRpdG9yLkMrK0VkaXRvcgAAAABcAC8AaABvAG0AZQAvAG0AYQBsAHQAYQBsAGUAZgAvAGQAZQB2AC8AYwBwAHAALwBwAGwAdQBzAHcAbQAvAGwAaQBiAC8AdwBtAC8ATABpAGIAVwBNAC4AYwBwAHAAAAASAEwAaQBiAFcATQAuAGMAcABwAAAAE0NwcEVkaXRvci5DKytFZGl0b3IAAAAAwwAAAA1jdXJyZW50ZWRpdG9yAAAAXAAvAGgAbwBtAGUALwBtAGEAbAB0AGEAbABlAGYALwBkAGUAdgAvAGMAcABwAC8AcABsAHUAcwB3AG0ALwBsAGkAYgAvAHcAbQAvAEwAaQBiAFcATQAuAGMAcABwAAAAJgBDAHAAcABFAGQAaQB0AG8AcgAuAEMAKwArAEUAZABpAHQAbwByAAAAJAAAAAIAAAAAAAAAAAAAAAYAAAABAAAAAQAAAAAAAAAAAAAAOAAAAAA=</value>
  </data>
  <data>
   <variable>ProjectDependencies</variable>
@@ -154,6 +154,10 @@
   <value type="QByteArray">000000ff0000000100000002000002a70000fa000000000001010000000100</value>
  </data>
  <data>
+  <variable>value-PanelSplitterState:/home/maltalef/dev/cpp/pluswm/pluswm.creator:Run</variable>
+  <value type="QByteArray">000000ff0000000100000002000002eb0000fa000000000001010000000100</value>
+ </data>
+ <data>
   <variable>value-PanelSplitterState:/home/maltalef/downloads/serenity/CMakeLists.txt:Build</variable>
   <value type="QByteArray">000000ff0000000100000002000003530000fa000000000001010000000100</value>
  </data>
@@ -169,24 +173,24 @@
   <variable>value-ProjectTree.ExpandData</variable>
   <valuelist type="QVariantList">
    <valuelist type="QVariantList">
-    <value type="QString">/home/maltalef/dev/cpp/pluswm/lib/wm</value>
-    <value type="QString">wm</value>
-   </valuelist>
-   <valuelist type="QVariantList">
-    <value type="QString">/home/maltalef/dev/cpp/pluswm</value>
-    <value type="QString">pluswm [master]</value>
-   </valuelist>
-   <valuelist type="QVariantList">
-    <value type="QString">/home/maltalef/dev/cpp/pluswm/lib/util</value>
-    <value type="QString">util</value>
+    <value type="QString">/home/maltalef/dev/cpp/pluswm/lib/client</value>
+    <value type="QString">client</value>
    </valuelist>
    <valuelist type="QVariantList">
     <value type="QString">/home/maltalef/dev/cpp/pluswm/lib</value>
     <value type="QString">lib</value>
    </valuelist>
    <valuelist type="QVariantList">
+    <value type="QString">/home/maltalef/dev/cpp/pluswm</value>
+    <value type="QString">pluswm [master]</value>
+   </valuelist>
+   <valuelist type="QVariantList">
     <value type="QString">/home/maltalef/dev/cpp/pluswm/src</value>
     <value type="QString">src</value>
+   </valuelist>
+   <valuelist type="QVariantList">
+    <value type="QString">/home/maltalef/dev/cpp/pluswm/lib/wm</value>
+    <value type="QString">wm</value>
    </valuelist>
   </valuelist>
  </data>
@@ -229,6 +233,7 @@
    <value type="QString">PanelSplitterState:/home/maltalef/dev/cpp/plusblocks/plusblocks.creator:Build</value>
    <value type="QString">PanelSplitterState:/home/maltalef/dev/cpp/plusblocks/plusblocks.creator:Run</value>
    <value type="QString">PanelSplitterState:/home/maltalef/dev/cpp/pluswm/pluswm.creator:Build</value>
+   <value type="QString">PanelSplitterState:/home/maltalef/dev/cpp/pluswm/pluswm.creator:Run</value>
    <value type="QString">PanelSplitterState:/home/maltalef/downloads/serenity/CMakeLists.txt:Build</value>
    <value type="QString">PanelSplitterState:/home/maltalef/downloads/serenity/serenityos.creator:Build</value>
    <value type="QString">PanelSplitterState:/home/maltalef/untitled/CMakeLists.txt:Build</value>
