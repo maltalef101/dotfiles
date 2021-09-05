@@ -11,8 +11,8 @@ require('compe').setup {
   incomplete_delay = 400;
   max_abbr_width = 100;
   max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = false;
+  max_menu_width = 150;
+  documentation = true;
   source = {
     path = true;
     buffer = true;
