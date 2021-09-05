@@ -7,8 +7,11 @@ function M.load_options()
 		-- vim.fn.path+=**
 		-- vim.fn.wildignore=**/node_modules/**
 		--set formatoptions-=cro
+		shadafile = "NONE", -- don't write to a shada file
 		autoindent = true,
+		signcolumn = "yes",
 		backup = false, -- creates a backup file
+		background = 'dark', -- dark themed gruvbox
 		clipboard = 'unnamedplus', -- allow neovim to access the system clipboard
 		cmdheight = 2, -- more space in the neovim command line for displaying messages
 		completeopt = { 'menuone', 'noselect' },
@@ -24,19 +27,19 @@ function M.load_options()
 		hlsearch = false, -- highlight all matches on previous search pattern
 		ignorecase = true, -- ignore case in search patterns
 		incsearch = true,
-		laststatus = 0, -- always display the statusline
 		mouse = 'a', -- allow the mouse to be used in neovim
 		number = true, -- set numbered lines
 		pumheight = 10, -- Pop Up Menu height
 		relativenumber = true, -- set relative numbered lines
 		scrolloff = 8, -- is one of my fav
 		shiftwidth = 4,
+		showtabline = 2,
 		showmode = false, -- we don't need to see things like -- INSERT -- anymore
 		sidescrolloff = 8,
 		smartcase = true, -- smart case
 		smartindent = true, --make indenting smarter again
 		softtabstop = 4,
-		splitbelow = true, -- force all horizontal splits to go below the current window 
+		splitbelow = true, -- force all horizontal splits to go below the current window
 		splitright = true, -- force all vertical splits to go to the right of the current window
 		swapfile = false, -- creates a swapfile
 		tabstop = 4,
@@ -49,14 +52,47 @@ function M.load_options()
 		writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 	}
 
-	opt.shortmess:append('c')
-	
+	opt.shortmess:append('casI')
+
+
 	for k, v in pairs(options) do
 		vim.opt[k] = v
 	end
+
+	-- Colorscheme
+	vim.cmd('let g:gruvbox_underline = v:false')
+	vim.cmd('colorscheme gruvbox')
+	vim.cmd('hi link TSError normal')
+	
+	-- Empty statusline. Galaxyline mid providers don't display correctly if not
+	vim.cmd('hi clear StatusLine')
 end
 
--- Colorscheme
-vim.cmd('colorscheme gruvbox')
+function M.disable_builtins()
+	local disabled_built_ins = {
+    "netrw",
+    "netrwPlugin",
+    "netrwSettings",
+    "netrwFileHandlers",
+    "gzip",
+    "zip",
+    "zipPlugin",
+    "tar",
+    "tarPlugin",
+    "getscript",
+    "getscriptPlugin",
+    "vimball",
+    "vimballPlugin",
+    "2html_plugin",
+    "logipat",
+    "rrhelper",
+    "spellfile_plugin",
+    "matchit"
+	}
+
+	for _, plugin in pairs(disabled_built_ins) do
+    vim.g["loaded_" .. plugin] = 1
+	end
+end
 
 return M
