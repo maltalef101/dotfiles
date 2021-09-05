@@ -1,5 +1,3 @@
-local remap = vim.api.nvim_set_keymap
-
 -- Set leader
 remap('n', '<Space>', '<NOP>', { noremap = true, silent = true })
 vim.g.mapleader = ' '
@@ -7,8 +5,8 @@ vim.g.mapleader = ' '
 -- Resource init.lua
 remap('n', '<Leader><CR>', ':so ~/.config/nvim/init.lua<CR>', { noremap = true })
 
--- netrw binding
-remap('n', '<Leader>e', ':Fern . -drawer -toggle<CR>', { noremap = true, silent = true })
+-- nvim-tree binding
+remap('n', '<Leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 
 -- Better split navigation
 remap('n', '<C-h>', '<C-w>h', { silent = true })
@@ -31,7 +29,7 @@ remap('v', '>', '>gv', {})
 remap('v', '<', '<gv', {})
 
 -- Buffer/Tab switching
-remap('n', '<Leader>qq', ':bp<BAR>bd #<CR>', { noremap = true})
-remap('n', '<Tab>', ':bn<CR>', { noremap = true, silent = true})
-remap('n', '<S-Tab>', ':bp<CR>', { noremap = true, silent = true})
+remap('n', '<Leader>qq', ':BufferClose<CR>', { noremap = true, silent = true})
+remap('n', '<Tab>', ':BufferNext<CR>', { noremap = true, silent = true})
+remap('n', '<S-Tab>', ':BufferPrevious<CR>', { noremap = true, silent = true})
 remap('n', '<Leader>bl', ':ls<CR>', { noremap = true})
