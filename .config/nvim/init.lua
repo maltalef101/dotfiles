@@ -1,10 +1,10 @@
 require('config')
 
+require('plugins')
+
 require('lsp').config()
 
-require('plugins')
 require('keymappings')
 
 require('settings').load_options()
-
--- require('core.galaxyline')
+require('settings').disable_builtins()
