@@ -1,14 +1,3 @@
--- Check if packer.nvim is installed
-local execute = vim.api.nvim_command
-local fn = vim.fn
-
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-
-if fn.empty(fn.glob(install_path)) > 0 then
-		execute('!git clone https://github.com/wbthomason/packer.nvim ' ..install_path)
-		execute('packadd packer.nvim')
-end
-
 return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
@@ -24,21 +13,29 @@ return require('packer').startup(function(use)
 	}
 
 	use	{ 'kabouzeid/nvim-lspinstall',
-		event = 'VimEnter',
 		config = function() require('lspinstall').setup() end,
 	}
 
 	use { 'hrsh7th/nvim-compe',
 		event = "InsertEnter",
-		config = function() require('core.compe') end,
-		requires = 'hrsh7th/vim-vsnip',
+		config = function() require('core.compe').setup() end,
+		requires = {
+			{
+				'L3MON4D3/LuaSnip',
+				event = "InsertEnter",
+			},
+			{
+				'rafamadriz/friendly-snippets',
+				event = "InsertCharPre",
+			},
+		},
 	}
 
 	-- Treesitter
 	use { 'nvim-treesitter/nvim-treesitter',
+		branch = '0.5-compat',
 		config = function() require('core.treesitter') end,
 		run = ':TSUpdate',
-		requires = 'nvim-treesitter/nvim-treesitter-textobjects'
 	}
 
 	-- Telescope for fuzzy file-searching
@@ -51,9 +48,9 @@ return require('packer').startup(function(use)
 		},
 	}
 
-	-- Gruvbox !!1!11
-	use { 'ellisonleao/gruvbox.nvim',
-		requires = 'rktjmp/lush.nvim',
+	-- Colorscheme and stuff
+	use { '~/dev/gruvbox.nvim',
+		requires =  'tjdevries/colorbuddy.nvim'
 	}
 
 	-- Git related plugins

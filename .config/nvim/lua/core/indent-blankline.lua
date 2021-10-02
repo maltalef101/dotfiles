@@ -13,9 +13,6 @@ function M.setup()
 		buftype_exclude = { 'NvimTree', 'terminal', 'help' },
 		show_current_context = true,
 	}
-
-	vim.cmd('hi IndentBlanklineContextChar guifg=#6d6f64 gui=bold')
-	vim.cmd('hi IndentBlanklineChar gui=bold')
 end
 
 return M

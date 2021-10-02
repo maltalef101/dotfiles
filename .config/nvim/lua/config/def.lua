@@ -4,16 +4,14 @@ HOME = vim.fn.expand('$HOME')
 CACHE_PATH = vim.fn.stdpath('cache')
 DATA_PATH = vim.fn.stdpath "data"
 
-local util = require('lspconfig/util')
-
 remap = vim.api.nvim_set_keymap
 
 local common_capabilities = require('lsp').common_capabilities()
-local common_on_attach = require('lsp').on_attach()
+local common_on_attach = require('lsp').common_on_attach
 
-local common_root= util.root_pattern(".git")
 
 mvim = {
+	colorscheme = "gruvbox",
   log = {
     ---@usage can be { "trace", "debug", "info", "warn", "error", "fatal" },
     level = "warn",
@@ -63,7 +61,31 @@ mvim = {
 			},
 		},
 		compe = {
-
+			enabled = true;
+			autocomplete = true;
+			debug = false;
+			min_length = 1;
+			preselect = 'enable';
+			throttle_time = 80;
+			source_timeout = 200;
+			incomplete_delay = 400;
+			max_abbr_width = 100;
+			max_kind_width = 100;
+			max_menu_width = 150;
+			documentation = true;
+			source = {
+				path = true,
+				buffer = true,
+				calc = true,
+				vsnip = false,
+				luasnip = true,
+	      nvim_lsp = true,
+				nvim_lua = false;
+	      spell = true,
+				tags = true;
+				snippets_nvim = false;
+				treesitter = true;
+			},
 		},
 	},
 	lsp = {
@@ -133,9 +155,16 @@ mvim = {
 						"-E",
 						DATA_PATH .. "/lspinstall/lua/main.lua",
 					},
-					root_dir = common_root,
+					root_dir = function(fname)
+						local util = require("lspconfig/util")
+
+						local root_files = {
+							".git"
+						}
+
+						return util.root_pattern(unpack(root_files))(fname)
+					end,
 					on_attach = common_on_attach,
-					filetypes = { 'lua' },
 					settings = {
 						Lua = {
 							runtime = {
@@ -225,8 +254,71 @@ mvim = {
 						DATA_PATH .. "/lspinstall/python/node_modules/.bin/pyright-langserver",
           "--stdio",
 					},
-					root_dir = common_root,
+					root_dir = function(fname)
+						local util = require("lspconfig/util")
+
+						local root_files = {
+							".git",
+						}
+
+						return util.root_pattern(unpack(root_files))(fname)
+					end,
 					on_attach = common_on_attach,
+				},
+			},
+		},
+		javascript = {
+			lsp = {
+				provider = 'tsserver'	,
+				setup = {
+					cmd = {
+						DATA_PATH .. "/lspinstall/typescript/node_modules/.bin/typescript-language-server",
+						"--stdio"
+					},
+					root_dir = function(fname)
+						local util = require("lspconfig/util")
+
+						local root_files = {
+							"package.json",
+							"tsconfig.json",
+							"jsconfig.json",
+							".git",
+						}
+
+						return util.root_pattern(unpack(root_files))(fname)
+					end,
+					on_attach = common_on_attach,
+				},
+			},
+		},
+		html = {
+			lsp = {
+				provider = 'html',
+				setup = {
+					cmd = {
+						"node",
+						DATA_PATH .. "/lspinstall/html/vscode-html/html-language-features/server/dist/node/htmlServerMain.js",
+						"--stdio"
+					},
+				}
+			},
+		},
+		gdscript = {
+			lsp = {
+				provider = 'gdscript',
+				setup = {
+					cmd = { 'nc', 'localhost', '6008'},
+					filetypes = { 'gdscript', 'gd', 'gdscript3' },
+					root_dir = function(fname)
+						local util = require("lspconfig/util")
+
+						local root_files = {
+							"project.godot",
+							".git",
+						}
+
+						return util.root_pattern(unpack(root_files))(fname)
+					end,
 				},
 			},
 		},
@@ -234,15 +326,24 @@ mvim = {
 	treesitter = {
 		ensure_installed = { 'lua', 'cpp', 'latex', 'cmake'}, -- list of languages
 		ignore_install = {}, -- list of parsers to ignore installing
+    matchup = {
+      enable = false, -- mandatory, false will disable the whole extension
+      -- disable = { "c", "ruby" },  -- optional, list of language that will be disabled
+    },
 		highlight = {
 			enable = true, -- false will disable the whole extension
+			additional_vim_regex_highlighting = true,
 			keymaps = {
 				init_selection = "gnn",
 				node_incremental = "grn",
 				scope_incremental = "grc",
 				node_decremental = "grm",
 			},
-			additional_vim_regex_highlighting = false,
+		},
+		rainbow = {
+			enable = true,
+			extended_mode = true,
+			max_file_lines = 1000,
 		},
 	},
 }

@@ -1,10 +1,15 @@
-require('config')
 
-require('plugins')
-
-require('lsp').config()
+require('config'):load()
 
 require('keymappings')
 
-require('settings').load_options()
-require('settings').disable_builtins()
+local plugins = require('plugins')
+
+if not plugins.packer_installed() then
+	plugins.install_packer()
+	plugins:load()
+else
+	plugins:load()
+end
+
+require('lsp').global_setup()

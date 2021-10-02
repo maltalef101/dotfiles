@@ -1,6 +1,6 @@
 local M = {}
 
-function M.config()
+function M.global_setup()
 	vim.lsp.protocol.CompletionItemKind = mvim.lsp.completion.item_kind
 
 	for _, sign in ipairs(mvim.lsp.diagnostics.signs.values) do
@@ -10,18 +10,40 @@ function M.config()
 	require('lsp.handlers').setup()
 end
 
-function M.on_attach(_, bufnr)
+local function lsp_highlight_document(client)
+	--if mvim.lsp.document_highlight == false then
+	--	return
+	--end
+
+	--if client.resolved_capabilites.document_highlight then
+		vim.cmd("hi LspReferenceRead cterm=bold ctermbg=red guibg=#353d46")
+		vim.cmd("hi LspReferenceText cterm=bold ctermbg=red guibg=#353d46")
+		vim.cmd("hi LspReferenceWrite cterm=bold ctermbg=red guibg=#353d46")
+
+		vim.api.nvim_exec(
+			[[
+			augroup lsp_document_highlight
+				autocmd! * <buffer>
+				autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+				autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+			augroup END
+		]], false)
+		--end
+
+end
+
+local function add_lsp_buf_keybinds(bufnr)
 	local function buf_remap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
 	buf_remap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
-	buf_remap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true })
-	buf_remap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { noremap = true, silent = true })
-	buf_remap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true })
-	buf_remap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { noremap = true, silent = true })
-	buf_remap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true })
-	buf_remap('n', 'gl', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ show_header = false, border = "single" })<CR>', { noremap = true, silent = true })
-	buf_remap('n', 'd]', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
-	buf_remap('n', 'd[', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
+	buf_remap('n', 'gd', "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
+	buf_remap('n', 'gD', "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
+	buf_remap('n', 'gi', "<cmd>lua vim.lsp.buf.implementation()<CR>", { noremap = true, silent = true })
+	buf_remap('n', 'gr', "<cmd>lua vim.lsp.buf.references()<CR>", { noremap = true, silent = true })
+	buf_remap('n', 'gs', "<cmd>lua vim.lsp.buf.signature_help()<CR>", { noremap = true, silent = true })
+	buf_remap('n', 'gl', "<cmd>lua require'lsp.handlers'.show_line_diagnostics()<CR>", { noremap = true, silent = true })
+	buf_remap('n', 'd]', "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", { noremap = true, silent = true })
+	buf_remap('n', 'd[', "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", { noremap = true, silent = true })
 
 	buf_remap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
 	buf_remap('n', '<leader>rr', '<cmd>lua vim.lsp.buf.rename()<CR>', { noremap = true, silent = true })
@@ -29,11 +51,28 @@ function M.on_attach(_, bufnr)
 	buf_remap('n', '<leader>wS', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', { noremap = true, silent = true })
 end
 
+function M.common_on_attach(client, bufnr)
+	lsp_highlight_document(client)
+	add_lsp_buf_keybinds(bufnr)
+end
+
 function M.setup(lang)
 	local lsp = mvim.lang[lang].lsp
 
-	local lspconfig = require('lspconfig')
-	lspconfig[lsp.provider].setup(lsp.setup)
+	if lsp.provider ~= nil and lsp.provider ~= "" then
+		local lspconfig = require('lspconfig')
+
+		if not lsp.setup.on_attach then
+			lsp.setup.on_attach = M.common_on_attach
+		end
+
+		if not lsp.setup.capabilities then
+			lsp.setup.capabilities = M.common_capabilities()
+		end
+
+		lspconfig[lsp.provider].setup(lsp.setup)
+		vim.cmd("LspStart")
+	end
 end
 
 function M.common_capabilities()

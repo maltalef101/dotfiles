@@ -54,18 +54,10 @@ function M.load_options()
 
 	opt.shortmess:append('casI')
 
-
 	for k, v in pairs(options) do
 		vim.opt[k] = v
 	end
 
-	-- Colorscheme
-	vim.cmd('let g:gruvbox_underline = v:false')
-	vim.cmd('colorscheme gruvbox')
-	vim.cmd('hi link TSError normal')
-	
-	-- Empty statusline. Galaxyline mid providers don't display correctly if not
-	vim.cmd('hi clear StatusLine')
 end
 
 function M.disable_builtins()
@@ -93,6 +85,11 @@ function M.disable_builtins()
 	for _, plugin in pairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1
 	end
+end
+
+function M.colorscheme()
+	-- Colorscheme
+	require('colorbuddy').colorscheme('gruvbox')
 end
 
 return M
