@@ -141,14 +141,15 @@ gls.left[6] = {
 		provider = 'FileSize',
 		icon = ' ',
 		condition = condition.buffer_not_empty,
-		highlight = { colors.fg, colors.bg1 },
+		highlight = { colors.fg, colors.bg2 },
+		separator = " ",
+		separator_highlight = { 'NONE', colors.bg1 },
 	}
 }
 
 gls.left[7] = {
 	FileIcon = {
 		provider = 'FileIcon',
-		icon = ' ',
 		condition = condition.buffer_not_empty,
 		highlight = { require('galaxyline.provider_fileinfo').get_file_icon_color, colors.bg1 },
 	}

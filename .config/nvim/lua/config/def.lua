@@ -87,6 +87,9 @@ mvim = {
 				treesitter = true;
 			},
 		},
+		comment = {
+			active = true,
+		},
 	},
 	lsp = {
 		completion = {
@@ -134,6 +137,7 @@ mvim = {
 			},
 			underline = true,
 			severity_sort = true,
+			update_in_insert = true,
 		},
 		document_highlight = true,
 		popup_border = 'single',
@@ -322,6 +326,42 @@ mvim = {
 				},
 			},
 		},
+-- 		rust = {
+-- 			lsp = {
+-- 				provider = 'rls',
+-- 				setup = {
+-- 					cmd = { 'rls' },
+-- 					filetypes = { 'rust' },
+-- 					root_dir = function(fname)
+-- 						local util = require('lspconfig/util')
+-- 
+-- 						local root_files = {
+-- 							"Cargo.toml",
+-- 						}
+-- 
+-- 						return util.root_pattern(unpack(root_files))(fname)
+-- 					end,
+-- 				},
+-- 			},
+--  		},
+ 		rust = {
+			lsp = {
+				provider = 'rust_analyzer',
+				setup = {
+					cmd = { 'rust-analyzer' },
+					filetypes = { 'rust' },
+					root_dir = function(fname)
+						local util = require('lspconfig/util')
+
+						local root_files = {
+							"Cargo.toml",
+						}
+
+						return util.root_pattern(unpack(root_files))(fname)
+					end,
+				},
+			}
+		}
 	},
 	treesitter = {
 		ensure_installed = { 'lua', 'cpp', 'latex', 'cmake'}, -- list of languages

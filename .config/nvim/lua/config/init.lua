@@ -6,7 +6,6 @@ function M:load()
 	local settings = require('config.settings')
 	settings.load_options()
 	settings.disable_builtins()
-	settings.colorscheme()
 end
 
 return M

@@ -12,4 +12,7 @@ else
 	plugins:load()
 end
 
+require('config.settings').colorscheme()
+
 require('lsp').global_setup()
+

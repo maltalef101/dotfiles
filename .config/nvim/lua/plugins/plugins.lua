@@ -90,4 +90,8 @@ return require('packer').startup(function(use)
     requires =  'kyazdani42/nvim-web-devicons',
 	}
 
+	use { 'terrortylor/nvim-comment',
+		config = function() require('core.comment').setup() end
+	}
+
 end)

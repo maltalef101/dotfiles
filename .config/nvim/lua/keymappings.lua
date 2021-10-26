@@ -29,13 +29,13 @@ remap('v', '>', '>gv', {})
 remap('v', '<', '<gv', {})
 
 -- Buffer/Tab switching
-remap('n', '<Leader>qq', ':BufferClose<CR>', { noremap = true, silent = true})
+remap('n', '<M-q>', ':BufferClose<CR>', { noremap = true, silent = true})
 remap('n', '<Tab>', ':BufferNext<CR>', { noremap = true, silent = true})
 remap('n', '<S-Tab>', ':BufferPrevious<CR>', { noremap = true, silent = true})
 remap('n', '<Leader>bl', ':ls<CR>', { noremap = true})
 
 -- Quickfix mappings
-remap('n', '<C-J>', ':cnext<CR>', { noremap = true, silent = true })
-remap('n', '<C-K>', ':cprev<CR>', { noremap = true, silent = true })
-remap('n', '<C-H>', ':cclose<CR>', { noremap = true, silent = true })
-remap('n', '<C-L>', ':copen<CR>', { noremap = true, silent = true })
+remap('n', '<M-j>', ':cnext<CR>', { noremap = true, silent = true })
+remap('n', '<M-k>', ':cprev<CR>', { noremap = true, silent = true })
+remap('n', '<M-h>', ':cclose<CR>', { noremap = true, silent = true })
+remap('n', '<M-l>', ':copen<CR>', { noremap = true, silent = true })
