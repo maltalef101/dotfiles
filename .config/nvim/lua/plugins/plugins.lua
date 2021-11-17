@@ -40,7 +40,7 @@ return require('packer').startup(function(use)
 
 	-- Telescope for fuzzy file-searching
 	use { 'nvim-telescope/telescope.nvim',
-		config = function() require('core.telescope') end,
+		config = function() require('core.telescope').setup() end,
 		requires = {
 			'nvim-lua/popup.nvim',
 			'nvim-lua/plenary.nvim',

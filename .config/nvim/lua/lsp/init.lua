@@ -15,7 +15,7 @@ local function lsp_highlight_document(client)
 		return
 	end
 
-	 if client.resolved_capabilities.document_highlight then
+	if client.resolved_capabilities.document_highlight then
 		vim.cmd("hi LspReferenceRead cterm=bold ctermbg=red guibg=#353d46")
 		vim.cmd("hi LspReferenceText cterm=bold ctermbg=red guibg=#353d46")
 		vim.cmd("hi LspReferenceWrite cterm=bold ctermbg=red guibg=#353d46")
@@ -32,6 +32,8 @@ local function lsp_highlight_document(client)
       false
     )
 	end
+
+	vim.api.nvim_command('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
 end
 
 local function add_lsp_buf_keybinds(bufnr)

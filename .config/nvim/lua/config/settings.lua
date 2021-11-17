@@ -14,7 +14,7 @@ function M.load_options()
 		background = 'dark', -- dark themed gruvbox
 		clipboard = 'unnamedplus', -- allow neovim to access the system clipboard
 		cmdheight = 2, -- more space in the neovim command line for displaying messages
-		completeopt = { 'menuone', 'noselect' },
+		completeopt = { 'menu', 'menuone', 'noselect' },
 		conceallevel = 0, -- so that `` is visible in markdown files
 		cursorcolumn = true, -- highlight the current column
 		cursorline = true, -- highlight the current line

@@ -223,6 +223,16 @@ mvim = {
 				setup = {
 					cmd = { DATA_PATH .. "/lspinstall/latex/texlab" },
 					settings = {
+						texlab = {
+							latexFormatter = 'latexindent',
+							latexindent = {
+								modifyLineBreaks = true,
+							},
+							build = {
+								executable = 'compiler',
+								args = { '%f' },
+							}
+						}
 						--[[texlab = {
 							build = {
 								executable = 'compiler',
