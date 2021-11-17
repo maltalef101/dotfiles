@@ -14,17 +14,24 @@ file=$(readlink -f "$1")
 dir=${file%/*}
 base="${file%.*}"
 ext="${file##*.}"
+shortfile=$(basename "$file")
+noext=${shortfile%.*}
 
 cd "$dir" || exit
 
 textype() { \
 	command="pdflatex"
 	( sed 5q "$file" | grep -i -q 'xelatex' ) && command="xelatex"
+	bibcommand="bibtex $noext"
+	( grep -i addbibresource "$file" >/dev/null ) && bibcommand="biber --input-directory \"$dir\" \"$base\""
+	
+	echo "pwd $(pwd)"
 	$command --output-directory="$dir" "$base" &&
-	grep -i addbibresource "$file" >/dev/null &&
-	biber --input-directory "$dir" "$base" &&
+	$bibcommand && 
 	$command --output-directory="$dir" "$base" &&
-	$command --output-directory="$dir" "$base"
+	$command --output-directory="$dir" "$base" 
+
+	texclear "$file"
 }
 
 case "$ext" in
