@@ -1,7 +1,6 @@
 ;;; init.el -- My Emacs config
 ;-*-Emacs-Lisp-*-
 
-
 (defun memacs/display-startup-time ()
   (message "[STARTUP] Emacs loaded in %s with %d garbage collections."
 	   (format "%.2f seconds"
@@ -19,9 +18,7 @@
 (tool-bar-mode -1)	   ; Disable the toolbar
 (tooltip-mode -1)	   ; Disable to
 (scroll-bar-mode -1)   ; Disable visible scrollbar
-
-;; Theme
-(load-theme 'doom-gruvbox t)
+(tab-bar-mode 1)
 
 ;; Setup the visible bell
 (setq visible-bell t)
@@ -77,13 +74,17 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+(use-package rainbow-delimiters
+  :demand
+  :config
+  (rainbow-delimiters-mode))
+
 (use-package doom-themes
   :init
   (setq doom-themes-enable-bold t
 	doom-themes-enable-italic t)
   :config
   (load-theme 'doom-gruvbox t))
-  
 
 (use-package auto-package-update
   :custom
@@ -100,17 +101,17 @@
 (setq auto-save-file-name-transforms
       `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
 
-;; (defun memacs/evil-hook ()
-;;	 (dolist (mode '(custom-mode
-;;		  eshell-mode
-;;		  git-rebase-mode
-;;		  erc-mode
-;;		  circe-server-mode
-;;		  circe-chat-mode
-;;		  circe-query-mode
-;;		  sauron-mode
-;;		  term-mode))
-;;	   (add-to-list 'evil-emacs-state-modes mode)))
+(defun memacs/evil-hook ()
+	 (dolist (mode '(custom-mode
+		  eshell-mode
+		  git-rebase-mode
+		  erc-mode
+		  circe-server-mode
+		  circe-chat-mode
+		  circe-query-mode
+		  sauron-mode
+		  term-mode))
+	   (add-to-list 'evil-emacs-state-modes mode)))
 
 (use-package evil
   :init
@@ -141,8 +142,7 @@
 (use-package evil-collection
   :after evil
   :config
-  (evil-collection-init)
-  (diminish 'evil-collection-unimpaired-mode))
+  (evil-collection-init))
 
 (use-package ivy
   :diminish
@@ -179,10 +179,8 @@
   :config
   (counsel-mode 1))
 
-(use-package swiper)
-
-(use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode))
+(use-package swiper
+  :commands (swiper))
 
 (use-package all-the-icons)
 
@@ -202,7 +200,8 @@
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
 
-(use-package treemacs)
+(use-package treemacs
+  :commands (treemacs))
 
 (use-package general
   :config
@@ -245,11 +244,51 @@
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
-(use-package button-lock
-  :diminish button-lock-mode)
-(use-package fixmee
-  :diminish fixmee-mode
-  :hook (prog-mode . fixmee-mode))
+;; FIXME: find a better fixme package. This one uses `cl`, and `cl` has been
+;; deprecated for a long time now.
+;; (use-package button-lock
+;;   :diminish button-lock-mode)
+;; (use-package fixmee
+;;   :diminish fixmee-mode
+;;   :hook (prog-mode . fixmee-mode))
+
+(use-package dired
+  :ensure nil
+  :commands (dired dired-jump)
+  :bind (("C-x C-j" . dired-jump))
+  :custom ((dired-listing-switches "-agoh --group-directories-first"))
+  :config
+  (evil-collection-define-key 'normal 'dired-mode-map
+    "h" 'dired-single-up-directory
+    "l" 'dired-single-find-file))
+
+(use-package all-the-icons-dired
+  :after dired
+  :commands (dired dired-jump)
+  :hook (dired-mode . all-the-icons-dired-mode))
+
+(use-package dired-single
+  :commands (dired dired-jump)
+  :after dired)
+
+(use-package diredfl
+  :hook (dired-mode . diredfl-mode)
+  :after dired)
+
+(use-package dired-open
+  :after dired
+  :commands (dired dired-jump)
+  :config
+;;  (add-to-list 'dired-open-functions #'dired-open-xdg t)
+  (setq dired-open-extensions '(("png" . "sxiv")
+				("mkv" . "mpv"))))
+
+(use-package dired-hide-dotfiles
+  :after dired
+  :commands (dired dired-jump)
+  :config
+  (evil-collection-define-key 'normal 'dired-mode-map
+    "H" 'dired-hide-dotfiles-mode))
 
 ;; LSP and language specific stuff
 (defun memacs/lsp-mode-setup ()
@@ -272,23 +311,22 @@
 (use-package lsp-treemacs
   :after lsp)
 
-(use-package lsp-ivy)
+(use-package lsp-ivy
+  :after lsp)
 
 (use-package company
   :hook (prog-mode . company-mode)
   :bind
   (:map company-active-map
         ("<tab>" . company-complete-selection))
-  (:map lsp-mode-map
-        ("<tab>" . company-indent-or-complete-common))
+  ;; (:map lsp-mode-map
+  ;;       ("<tab>" . company-indent-or-complete-common))
   :custom 
   (company-minimum-prefix-length 1)
   (company-idle-delay 0.0))
 
 (use-package company-box
-  :hook (company-mode . company-box-mode)
-  :config
-  (diminish 'company-box-mode))
+  :hook (company-mode . company-box-mode))
 
 ;; TypeScript and JavaScript
 (use-package typescript-mode
@@ -314,6 +352,8 @@
   (add-hook 'json-mode-hook #'memacs/set-js-indentation))
 
 (use-package prettier-js
+  :mode "\\.jsx?\\'"
+  :after js2-mode
   :config
   (setq prettier-js-show-errors nil))
 
@@ -332,7 +372,8 @@
 
 ;; Python
 (use-package python-mode
-  :ensure t
+  :mode "\\.py\\'"
+  :ensure nil
   :hook (python-mode . lsp-deferred)
   :custom
   (python-shell-interpreter "python3"))
