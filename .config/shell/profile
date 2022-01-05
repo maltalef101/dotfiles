@@ -9,11 +9,13 @@
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')"
 export PATH="$PATH:/home/maltalef/.local/share/cargo/bin"
 
+EMACS="emacsclient -c -a emacs"
+
 # Default programs:
-export EDITOR="nvim"
-export VISUAL="nvim"
-export TERMINAL="st"
-export BROWSER="brave"
+export EDITOR=$EMACS
+export VISUAL=$EMACS
+export TERMINAL="alacritty"
+export BROWSER="firefox"
 export READER="zathura"
 export PAGER="less"
 export PLAYER="ncmpcpp"
@@ -74,7 +76,9 @@ export QT_QPA_PLATFORMTHEME="qt5ct" # gruvbox-dark-gtk is only a GTK theme. Qt u
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
-export TERM="screen-256color"
+
+# Tex
+export TEXMFDIST="/usr/share/texmf-dist"
 
 # This is the list for lf icons:
 export LF_ICONS="di=📁:\
