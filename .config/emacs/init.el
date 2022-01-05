@@ -20,6 +20,9 @@
 (tooltip-mode -1)	   ; Disable to
 (scroll-bar-mode -1)   ; Disable visible scrollbar
 
+;; Theme
+(load-theme 'doom-gruvbox t)
+
 ;; Setup the visible bell
 (setq visible-bell t)
 
@@ -32,12 +35,9 @@
 ;; (TODO: learn how to manage indentation in emacs)
 ;; (setq-default indent-tabs-mode nil)
 ;; (setq-default tab-width 2)
-;; (defvaralias 'c-basic-offset 'tab-width)
+(setq-default c-basic-offset 4)
 ;; (defvaralias 'ruby-indent-level 'tab-width)
 ;; (defvaralias 'sgml-basic-offset 'tab-width)
-
-;; Theme
-(load-theme 'gruvbox-dark-hard t)
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -53,8 +53,6 @@
 		shell-mode-hook
 		eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
-
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror)
@@ -78,6 +76,14 @@
 
 (require 'use-package)
 (setq use-package-always-ensure t)
+
+(use-package doom-themes
+  :init
+  (setq doom-themes-enable-bold t
+	doom-themes-enable-italic t)
+  :config
+  (load-theme 'doom-gruvbox t))
+  
 
 (use-package auto-package-update
   :custom
@@ -121,6 +127,10 @@
 
   (evil-set-initial-state 'messages-buffer-mode 'normal)
   (evil-set-initial-state 'dashboard-mode 'normal))
+
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
 
 (use-package undo-fu)
 
@@ -235,12 +245,11 @@
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
-(use-package button-lock)
+(use-package button-lock
+  :diminish button-lock-mode)
 (use-package fixmee
-  :hook (prog-mode . fixmee-mode)
-  :config
-  (diminish button-lock-mode)
-  (diminish fixmee-mode))
+  :diminish fixmee-mode
+  :hook (prog-mode . fixmee-mode))
 
 ;; LSP and language specific stuff
 (defun memacs/lsp-mode-setup ()
@@ -281,12 +290,53 @@
   :config
   (diminish 'company-box-mode))
 
+;; TypeScript and JavaScript
 (use-package typescript-mode
-  :mode ("\\.ts\\'" "\\.js\\'")
+  :mode "\\.ts\\'"
   :hook (typescript-mode . lsp-deferred)
   :config
   (setq typescript-indent-level 2))
 
+(defun memacs/set-js-indentation ()
+  (setq js-indent-level 2)
+  (setq evil-shift-width js-indent-level)
+  (setq-default tab-width 2))
 
-;; FIXME: Removing this hook shouldn't be necessary. 
+(use-package js2-mode
+  :mode "\\.jsx?\\'"
+  :config
+  ;; Use js2-mode for Node scripts
+  (add-to-list 'magic-mode-alist '("#!/usr/bin/env node" . js2-mode))
+
+  (setq js2-mode-show-strict-warnings nil)
+
+  (add-hook 'js2-mode-hook #'memacs/set-js-indentation)
+  (add-hook 'json-mode-hook #'memacs/set-js-indentation))
+
+(use-package prettier-js
+  :config
+  (setq prettier-js-show-errors nil))
+
+(dolist (mode '(c-mode-hook
+		c++-mode-hook
+		objc-mode-hook
+		cuda-mode-hook))
+  (add-hook mode (lambda () (lsp))))
+
+
+;; C/C++
+;; (use-package ccls
+;;   :hook ((c-mode c++-mode objc-mode cuda-mode) .
+;; 	 (lambda () (require 'ccls) (lsp))))
+
+
+;; Python
+(use-package python-mode
+  :ensure t
+  :hook (python-mode . lsp-deferred)
+  :custom
+  (python-shell-interpreter "python3"))
+
+;; FIXME: Removing this hook shouldn't be necessary.
+;;
 (remove-hook 'kill-emacs-hook 'pcache-kill-emacs-hook)
