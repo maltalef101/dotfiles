@@ -20,6 +20,23 @@
 (scroll-bar-mode -1)   ; Disable visible scrollbar
 (tab-bar-mode 1)
 
+;; Vim-like scrolling
+(setq scroll-step 1)
+(setq scroll-margin 10)
+(setq scroll-conservatively 9999)
+
+(setq user-emacs-directory "~/.config/emacs")
+
+;; Backups stay in a confined directory
+(setq backup-directory-alist `(("." . ,(expand-file-name "tmp/backups/" user-emacs-directory))))
+
+;; Auto-saves also stay in a confined directory
+(setq auto-save-list-file-prefix (expand-file-name "tmp/auto-saves/sessions/" user-emacs-directory)
+      auto-save-file-name-transforms `((".*" ,(expand-file-name "tmp/auto-saves/" user-emacs-directory) t)))
+
+(setq projectile-known-projects-file (expand-file-name "tmp/projectile-bookmarks.eld" user-emacs-directory)
+      lsp-session-file (expand-file-name "tmp/.lsp-session-v1" user-emacs-directory))
+
 ;; Setup the visible bell
 (setq visible-bell t)
 
@@ -74,10 +91,7 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-(use-package rainbow-delimiters
-  :demand
-  :config
-  (rainbow-delimiters-mode))
+(use-package no-littering)
 
 (use-package doom-themes
   :init
@@ -94,12 +108,6 @@
   :config
   (auto-package-update-maybe)
   (auto-package-update-at-time "09:00"))
-
-(setq user-emacs-directory "~/.config/emacs")
-
-(use-package no-littering)
-(setq auto-save-file-name-transforms
-      `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
 
 (defun memacs/evil-hook ()
 	 (dolist (mode '(custom-mode
@@ -170,7 +178,7 @@
 (use-package counsel
   :diminish counsel-mode
   :bind (("M-x" . counsel-M-x)
-	 ("C-x b" . counsel-ibuffer)
+	 ("C-x b" . counsel-switch-buffer)
 	 ("C-x C-f" . counsel-find-file)
 	 :map minibuffer-local-map
 	 ("C-r" . 'counsel-minibuffer-history))
@@ -255,29 +263,27 @@
 (use-package dired
   :ensure nil
   :commands (dired dired-jump)
-  :bind (("C-x C-j" . dired-jump))
+  :bind (("C-x C-j" . dired-jump)
+	 ("C-x d" . dired-single-magic-buffer))
   :custom ((dired-listing-switches "-agoh --group-directories-first"))
   :config
   (evil-collection-define-key 'normal 'dired-mode-map
     "h" 'dired-single-up-directory
-    "l" 'dired-single-find-file))
+    "l" 'dired-single-buffer
+    [remap dired-find-file] 'dired-single-buffer
+    [remap dired-up-directory] 'dired-single-up-directory))
 
 (use-package all-the-icons-dired
   :after dired
-  :commands (dired dired-jump)
   :hook (dired-mode . all-the-icons-dired-mode))
 
-(use-package dired-single
-  :commands (dired dired-jump)
-  :after dired)
+(use-package dired-single)
 
 (use-package diredfl
-  :hook (dired-mode . diredfl-mode)
-  :after dired)
+  :hook (dired-mode . diredfl-mode))
 
 (use-package dired-open
   :after dired
-  :commands (dired dired-jump)
   :config
 ;;  (add-to-list 'dired-open-functions #'dired-open-xdg t)
   (setq dired-open-extensions '(("png" . "sxiv")
@@ -285,12 +291,14 @@
 
 (use-package dired-hide-dotfiles
   :after dired
-  :commands (dired dired-jump)
   :config
   (evil-collection-define-key 'normal 'dired-mode-map
     "H" 'dired-hide-dotfiles-mode))
 
 ;; LSP and language specific stuff
+(use-package tree-sitter)
+(use-package tree-sitter-langs)
+
 (defun memacs/lsp-mode-setup ()
   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
   (lsp-headerline-breadcrumb-mode))
@@ -369,6 +377,9 @@
 ;;   :hook ((c-mode c++-mode objc-mode cuda-mode) .
 ;; 	 (lambda () (require 'ccls) (lsp))))
 
+(use-package modern-cpp-font-lock
+  :hook ((c++-mode) . #'modern-c++-font-lock-mode))
+
 
 ;; Python
 (use-package python-mode
@@ -380,4 +391,6 @@
 
 ;; FIXME: Removing this hook shouldn't be necessary.
 ;;
-(remove-hook 'kill-emacs-hook 'pcache-kill-emacs-hook)
+;; (remove-hook 'kill-emacs-hook 'pcache-kill-emacs-hook)
+
+;; Testing
