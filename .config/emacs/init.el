@@ -14,6 +14,9 @@
       inhibit-startup-message t
       inhibit-startup-echo-area-message t)
 
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
+
 (menu-bar-mode -1)	   ; Disable the menu bar
 (tool-bar-mode -1)	   ; Disable the toolbar
 (tooltip-mode -1)	   ; Disable to
@@ -45,7 +48,9 @@
 (electric-pair-mode)
 (setq show-paren-delay 0)
 
-;; Indentation 
+;; Indentation
+(setq-default tab-width 4)
+(setq-default evil-shift-width tab-width)
 ;; (TODO: learn how to manage indentation in emacs)
 ;; (setq-default indent-tabs-mode nil)
 ;; (setq-default tab-width 2)
@@ -92,6 +97,10 @@
 (setq use-package-always-ensure t)
 
 (use-package no-littering)
+
+(use-package unicode-fonts
+  :config
+  (unicode-fonts-setup))
 
 (use-package doom-themes
   :init
@@ -151,6 +160,10 @@
   :after evil
   :config
   (evil-collection-init))
+
+(use-package ws-butler
+  :hook ((text-mode . ws-butler-mode)
+	 (prog-mode . ws-butler-mode)))
 
 (use-package ivy
   :diminish
@@ -308,19 +321,32 @@
   :hook (lsp-mode . memacs/lsp-mode-setup)
   :init
   (setq lsp-keymap-prefix "C-c l")
+  (setq lsp-signature-auto-activate nil)
   :config
   (lsp-enable-which-key-integration t))
 
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
+  :config
+  (setq lsp-ui-doc-enable t)
+  (setq lsp-ui-sideline-enable t)
+  (setq lsp-ui-sideline-show-diagnostics t)
+  (setq lsp-ui-sideline-show-code-actions t)
+  (setq lsp-ui-sideline-show-hover nil)
+  (setq lsp-ui-sideline-show-symbol nil)
   :custom
-  (lsp-ui-doc-position 'bottom))
+  (lsp-ui-doc-position 'at-point)
+  )
 
 (use-package lsp-treemacs
   :after lsp)
 
 (use-package lsp-ivy
   :after lsp)
+
+(use-package flycheck
+  :defer t
+  :hook (lsp-mode . flycheck-mode))
 
 (use-package company
   :hook (prog-mode . company-mode)
@@ -371,7 +397,6 @@
 		cuda-mode-hook))
   (add-hook mode (lambda () (lsp))))
 
-
 ;; C/C++
 ;; (use-package ccls
 ;;   :hook ((c-mode c++-mode objc-mode cuda-mode) .
@@ -394,3 +419,4 @@
 ;; (remove-hook 'kill-emacs-hook 'pcache-kill-emacs-hook)
 
 ;; Testing
+(put 'dired-find-alternate-file 'disabled nil)
