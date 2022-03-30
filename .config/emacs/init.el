@@ -10,6 +10,14 @@
 
 (add-hook 'emacs-startup-hook #'memacs/display-startup-time)
 
+;; Killing all buffers
+(defun memacs/kill-all-buffers ()
+	(interactive)
+	(mapcar 'kill-buffer (buffer-list))
+	(delete-other-windows))
+
+(global-set-key (kbd "C-c K") 'memacs/kill-all-buffers)
+
 (setq inhibit-splash-screen t
       inhibit-startup-message t
       inhibit-startup-echo-area-message t)
@@ -23,10 +31,17 @@
 (scroll-bar-mode -1)   ; Disable visible scrollbar
 (tab-bar-mode 1)
 
+(fset 'yes-or-no-p 'y-or-n-p) ; Sensible prompts
+
 ;; Vim-like scrolling
 (setq scroll-step 1)
 (setq scroll-margin 10)
-(setq scroll-conservatively 9999)
+(setq scroll-conservatively 101)
+(setq auto-window-vscroll nil)
+
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-follow-mouse 't)
 
 (setq user-emacs-directory "~/.config/emacs")
 
@@ -200,6 +215,11 @@
   :config
   (counsel-mode 1))
 
+(use-package yasnippet
+  :config
+  (yas-global-mode))
+(use-package yasnippet-snippets)
+
 (use-package swiper
   :commands (swiper))
 
@@ -262,8 +282,8 @@
 
 (use-package magit
   :commands (magit-status magit-get-current-branch)
-  :custom
-  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+  :config
+  (setq magit-status-buffer-switch-function 'switch-to-buffer))
 
 ;; FIXME: find a better fixme package. This one uses `cl`, and `cl` has been
 ;; deprecated for a long time now.
@@ -286,10 +306,6 @@
     [remap dired-find-file] 'dired-single-buffer
     [remap dired-up-directory] 'dired-single-up-directory))
 
-(use-package all-the-icons-dired
-  :after dired
-  :hook (dired-mode . all-the-icons-dired-mode))
-
 (use-package dired-single)
 
 (use-package diredfl
@@ -308,6 +324,12 @@
   (evil-collection-define-key 'normal 'dired-mode-map
     "H" 'dired-hide-dotfiles-mode))
 
+(use-package auctex
+  :file "\\.tex\\'"
+  :hook (latex-mode . company-mode))
+
+(use-package crontab-mode)
+
 ;; LSP and language specific stuff
 (use-package tree-sitter)
 (use-package tree-sitter-langs)
@@ -322,6 +344,7 @@
   :init
   (setq lsp-keymap-prefix "C-c l")
   (setq lsp-signature-auto-activate nil)
+  (setq lsp-tex-server digestif)
   :config
   (lsp-enable-which-key-integration t))
 
@@ -364,7 +387,7 @@
 
 ;; TypeScript and JavaScript
 (use-package typescript-mode
-  :mode "\\.ts\\'"
+  :mode "\\*.ts\\'"
   :hook (typescript-mode . lsp-deferred)
   :config
   (setq typescript-indent-level 2))
@@ -375,7 +398,8 @@
   (setq-default tab-width 2))
 
 (use-package js2-mode
-  :mode "\\.jsx?\\'"
+  :mode "\\*.js\\'"
+	:hook (js2-mode . lsp-deferred)
   :config
   ;; Use js2-mode for Node scripts
   (add-to-list 'magic-mode-alist '("#!/usr/bin/env node" . js2-mode))
@@ -385,9 +409,15 @@
   (add-hook 'js2-mode-hook #'memacs/set-js-indentation)
   (add-hook 'json-mode-hook #'memacs/set-js-indentation))
 
+(use-package rjsx-mode
+	:mode "\\*.jsx\\'"
+	:hook (rjsx-mode . lsp-deferred)
+	:config
+
 (use-package prettier-js
-  :mode "\\.jsx?\\'"
+  :mode "\\*.js.*\\'"
   :after js2-mode
+	:hook (js2-mode . prettier-js-mode)
   :config
   (setq prettier-js-show-errors nil))
 
@@ -402,9 +432,8 @@
 ;;   :hook ((c-mode c++-mode objc-mode cuda-mode) .
 ;; 	 (lambda () (require 'ccls) (lsp))))
 
-(use-package modern-cpp-font-lock
-  :hook ((c++-mode) . #'modern-c++-font-lock-mode))
-
+(use-package cmake-mode
+  :mode "\\CMakeLists.txt\\'")
 
 ;; Python
 (use-package python-mode
