@@ -46,7 +46,8 @@ video() { ffmpeg \
 	-s "$(xdpyinfo | grep dimensions | awk '{print $2;}')" \
 	-i "$DISPLAY" \
  	-c:v libx264 -qp 0 -r 30 \
-	"$HOME/video-$(date '+%y%m%d-%H%M-%S').mkv" &
+	-pix_fmt yuv420p \
+	"$HOME/video-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
 	updateicon "⏺️"
 	}
@@ -80,11 +81,12 @@ audio() { \
 	}
 
 askrecording() { \
-	choice=$(printf "screencast\\nvideo\\naudio\\nwebcam\\nwebcam (hi-def)" | dmenu -i -p "Select recording style:")
+	choice=$(printf "screencast\\nvideo\\nvideo selected\\naudio\\nwebcam\\nwebcam (hi-def)" | dmenu -i -p "Select recording style:")
 	case "$choice" in
 		screencast) screencast;;
 		audio) audio;;
 		video) video;;
+		*selected) videoselected;;
 		webcam) webcam;;
 		"webcam (hi-def)") webcamhidef;;
 	esac
@@ -95,11 +97,28 @@ asktoend() { \
 	[ "$response" = "Yes" ] &&  killrecording
 	}
 
+videoselected()
+{
+	slop -f "%x %y %w %h" > /tmp/slop
+	read -r X Y W H < /tmp/slop
+	rm /tmp/slop
+
+	ffmpeg \
+	-f x11grab \
+	-framerate 60 \
+	-video_size "$W"x"$H" \
+	-i :0.0+"$X,$Y" \
+	-c:v libx264 -qp 0 -r 30 \
+	"$HOME/box-$(date '+%y%m%d-%H%M-%S').mkv" &
+	echo $! > /tmp/recordingpid
+	updateicon "⏺️"
+}
 
 case "$1" in
 	screencast) screencast;;
 	audio) audio;;
 	video) video;;
+	*selected) videoselected;;
 	kill) killrecording;;
 	*) ([ -f /tmp/recordingpid ] && asktoend && exit) || askrecording;;
 esac

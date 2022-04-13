@@ -2,5 +2,5 @@
 
 printf "Beginning upgrade.\\n"
 
-paru -Syu
+paru -Su
 pkill -RTMIN+6 "${STATUSBAR:-dwmblocks}"

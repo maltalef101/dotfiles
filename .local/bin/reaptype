@@ -16,7 +16,7 @@ cnt=0
 while [ $cnt -ne $quantity ] ; do
 	xdotool type "$text"
 	xdotool key Return
-	sleep 0.5
+	sleep 0.1
 
 	let "cnt++"
 done

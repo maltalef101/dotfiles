@@ -19,7 +19,6 @@ escbook="$(echo "$booktitle" | iconv -cf UTF-8 -t ASCII//TRANSLIT | tr -d '[:pun
 
 # As long as the extension is in the tag script, it'll work.
 ext="opus"
-# ext="${3:-'opus'}"
 
 # Get the total number of tracks from the number of lines.
 total="$(wc -l < "$2")"

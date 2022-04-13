@@ -10,5 +10,5 @@ savedir="$HOME/pictures/00screenshots/$(date "+%m-%Y")"
 
 [ -d "$savedir" ] || mkdir $savedir
 
-maim -u -c 255,0,0 -f png -m 5 -s "$savedir/$filename"
+maim -u -m 5 -s "$savedir/$filename"
 xclip "$savedir/$filename" -selection clipboard -t image/png

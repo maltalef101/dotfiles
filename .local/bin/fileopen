@@ -1,31 +1,13 @@
 #! /bin/sh
 
-# feed script an URL or file and will open it a certain way if its a file or an URL
-# if its a local file then it gets grabbed by the first case statement and if not
-# it opens it with certain applications
+# Feed script a file, and it will open it in a certain application depending on its type.
+# Only intented use is for terminal stuff, graphical programs will use xdg-open.
 
-elseact() {
-	case "$1" in
-		*reddit.com/r/*/comments/*)
-			rtv --enable-media -l "$1" ;;
-		*reddit.com/r/*|*reddit.com/u/*|*reddit.com/user/*)
-			LINK="$(echo "$1" | awk -F '.com' '{print $2}')"
-			rtv --enable-media -s "$LINK" ;;
-		*mkv|*webm|*mp4|*youtube.com/watch*|*youtube.com/playlist*|*youtu.be*|*hooktube.com*|*bitchute.com*|*videos.lukesmith.xyz*)
-			mpv -quiet "$1" >/dev/null 2>&1 ;;
-		*png|*jpg|*jpe|*jpeg|*gif|*image*)
-			curl -sL "$1" > "/tmp/$(echo "$1" | sed "s/.*\///")" && sxiv -a "/tmp/$(echo "$1" | sed "s/.*\///")"  >/dev/null 2>&1 ;;
-		*mp3|*flac|*opus|*mp3?source*)
-			setsid -f tsp curl -LO "$1" >/dev/null 2>&1 ;;
-		*)
-			if [ -f "$1" ]; then "$TERMINAL" -e "$EDITOR" "$1"
-		else "$BROWSER" "$1"; fi ;;
-	esac
-}
-
-case $(file --mime-type "$1" -bL) in
+case "$(file --mime-type "$1" -bL)" in
+    text/html) $EDITOR "$1";;
     text/*|application/json) $EDITOR "$1";;
 	image/*) rotdir "$1" | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\)\(_large\)*$" | sxiv -aio 2>/dev/null | lf-select;;
-    video/*|application/pdf) xdg-open "$1";;
-    *) elseact "$1" ;;
+	video/*) mpv "$1" ;;
+	application/pdf) xdg-open "$1";;
+    *) xdg-open "$1" ;;
 esac
