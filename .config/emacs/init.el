@@ -325,7 +325,7 @@
     "H" 'dired-hide-dotfiles-mode))
 
 (use-package auctex
-  :file "\\.tex\\'"
+  :mode "\\.tex\\'"
   :hook (latex-mode . company-mode))
 
 (use-package crontab-mode)
@@ -344,7 +344,7 @@
   :init
   (setq lsp-keymap-prefix "C-c l")
   (setq lsp-signature-auto-activate nil)
-  (setq lsp-tex-server digestif)
+  (setq lsp-tex-server 'digestif)
   :config
   (lsp-enable-which-key-integration t))
 
@@ -411,8 +411,7 @@
 
 (use-package rjsx-mode
 	:mode "\\*.jsx\\'"
-	:hook (rjsx-mode . lsp-deferred)
-	:config
+	:hook (rjsx-mode . lsp-deferred))
 
 (use-package prettier-js
   :mode "\\*.js.*\\'"
@@ -427,10 +426,13 @@
 		cuda-mode-hook))
   (add-hook mode (lambda () (lsp))))
 
+(dolist (mode '(c-mode-hook
+		c++-mode-hook
+		objc-mode-hook
+		cuda-mode-hook))
+  (add-hook mode (lambda () (tree-sitter-hl-mode))))
+
 ;; C/C++
-;; (use-package ccls
-;;   :hook ((c-mode c++-mode objc-mode cuda-mode) .
-;; 	 (lambda () (require 'ccls) (lsp))))
 
 (use-package cmake-mode
   :mode "\\CMakeLists.txt\\'")
