@@ -1,24 +1,23 @@
- ".local/share/applications/userapp-Telegram De
- sktop-*.desktop"
-!.config/coc/ultisnips
+ ".local/share/applications/userapp-Telegram Desktop-*.desktop"
 # .config/calcurse/
 # .config/fontconfig/
 # .config/gtk-2.0/
-# .config/joplin-desktop/
-# .config/joplin/
 # .config/lf/
+# .config/mimeapps.list
 # .config/mpd/
 # .config/ncmpcpp/
 # .config/newsboat/
 # .config/nvim/ftdetect/
 # .config/nvim/ftplugin/
 # .config/nvim/plugconfig/
+# .config/nvim/plugin
 # .config/nvim/plugin/
 # .config/nvim/spell/
 # .config/pcmanfm/
 # .config/qutebrowser/
 # .config/rtv/
 # .config/tmux/
+# .config/user-dirs.dirs
 # .config/vifm/
 # .config/zathura/
 # .config/zsh/common.zsh-theme
@@ -45,7 +44,14 @@
 .bashrc
 .cache/
 .cddb
-.config/BraveSoftware
+.config/emacs/.last-package-update-day
+.config/emacs/ac-comphist.dat
+.config/emacs/auto-save-list
+.config/emacs/elpa/
+.config/emacs/eshell
+.config/emacs/etc
+.config/emacs/var
+.config/emacs/tmp
 .config/Electron/
 .config/GIMP
 .config/Insomnia/
@@ -75,13 +81,14 @@
 .config/gh/
 .config/htop/
 .config/inkscape/
+.config/joplin-desktop/
+.config/joplin/
 .config/krdcrc
 .config/kritadisplayrc
 .config/kritarc
 .config/libfm/
 .config/libreoffice
 .config/lutris/
-.config/mimeapps.list
 .config/msmtp/
 .config/mutt/
 .config/neofetch/
@@ -89,6 +96,7 @@
 .config/npm
 .config/nvim/.netrwhist
 .config/nvim/plugged
+.config/nvim/plugin
 .config/nvim/undodir
 .config/nvm/
 .config/obs-studio
@@ -106,7 +114,6 @@
 .config/transmission-daemon/stats.json
 .config/transmission-daemon/torrents/
 .config/unity3d/
-.config/user-dirs.dirs
 .config/user-dirs.locale
 .config/vfetch/
 .config/weechat
