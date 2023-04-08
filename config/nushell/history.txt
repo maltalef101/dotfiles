@@ -1,0 +1,73 @@
+ls
+ls -al
+exa
+cd ..
+ls
+cd ..
+..
+ls -al
+cd
+vim .config/nushell/config.nu
+nvim .config/nushell/config.nu
+ps
+which ps
+ps ex
+ps -ex
+^ps
+^ps | nu
+^ps
+^ps | sort
+exa 
+exa -ls -al
+exa -al
+exa -al --color=always
+exa -al --color=always --group-directories-first
+vim .config/nushell/config.nu
+nvimvim .config/nushell/config.nu
+nvim .config/nushell/config.nu
+vim .config/nushell/env.nu
+nvim .config/nushell/env.nu
+D
+cd ~downloads
+cd ~/downloads/
+ls
+ls -al
+ls
+ls -al
+alias ls="exa --color=auto --group-directories-first"
+alias ls = exa --color=auto --group-directories-first
+ls
+ls -al
+echo $HOME
+echo $env.HOME
+ll
+all
+alias ll = ls -al
+ll
+vim .config/nushell/config.nu
+nvim .config/nushell/config.nu
+nvim ~/.config/nushell/config.nu
+ll
+enter 
+enter .
+shells
+d 1
+g 1
+g 0
+n
+p
+ll
+exit
+ids
+ds
+vim config.nu
+nvim config.nu
+ll
+nvim config.nu
+ll
+cd -
+cd
+cd ~
+ll
+config --help 
+config nu
